@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1; 
+            --primary: #6366f1; /* 经典靛紫 */
             --primary-dark: #4338ca;
-            --secondary: #a855f7; 
-            --bg-sidebar: #1e1b4b; 
+            --secondary: #a855f7; /* 高级亮紫 */
+            --bg-sidebar: #1e1b4b; /* 深紫蓝 */
             --bg-main: #f8fafc;
             --text-main: #1e293b;
+            --accent: #f59e0b;
         }
 
         body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: var(--bg-main); color: var(--text-main); margin: 0; display: flex; }
@@ -64,31 +65,31 @@
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>雅思 Pro · 终极版</h2>
+            <h2>雅思 Pro · 满分版</h2>
         </div>
         
         <div class="nav-group">
             <div class="nav-label">人物类 (People)</div>
-            <a href="#" class="nav-item active" onclick="loadTopic('friend')">重要好友</a>
+            <a href="#" class="nav-item active" onclick="loadTopic('friend')">重要好友 (Jerry)</a>
             <a href="#" class="nav-item" onclick="loadTopic('oldPerson')">有趣的老人</a>
-            <a href="#" class="nav-item" onclick="loadTopic('famous')">想见的名人</a>
         </div>
 
         <div class="nav-group">
             <div class="nav-label">地点类 (Places)</div>
-            <a href="#" class="nav-item" onclick="loadTopic('building')">独特建筑</a>
+            <a href="#" class="nav-item" onclick="loadTopic('building')">有趣/独特的建筑</a>
+            <a href="#" class="nav-item" onclick="loadTopic('nature')">自然风景区</a>
         </div>
 
         <div class="nav-group">
-            <div class="nav-label">经历/故事 (Events)</div>
-            <a href="#" class="nav-item" onclick="loadTopic('info')">搜寻信息的时刻</a>
-            <a href="#" class="nav-item" onclick="loadTopic('traditional')">传统故事</a>
+            <div class="nav-label">经历/事件 (Events)</div>
+            <a href="#" class="nav-item" onclick="loadTopic('info')">必须搜寻信息的时刻</a>
+            <a href="#" class="nav-item" onclick="loadTopic('traditional')">有趣的传统故事</a>
         </div>
 
         <div class="nav-group">
             <div class="nav-label">物品/兴趣 (Hobbies)</div>
-            <a href="#" class="nav-item" onclick="loadTopic('animal')">野生动物</a>
-            <a href="#" class="nav-item" onclick="loadTopic('watersport')">水上运动</a>
+            <a href="#" class="nav-item" onclick="loadTopic('animal')">想了解的野生动物</a>
+            <a href="#" class="nav-item" onclick="loadTopic('watersport')">想尝试的水上运动</a>
         </div>
     </nav>
 
@@ -100,109 +101,184 @@
         </div>
     </div>
 
-    <main class="main-content" id="app"></main>
+    <main class="main-content" id="app">
+        </main>
 
 <script>
     const topics = {
         friend: {
             title: "Describe a good friend who is important to you",
             cue: "You should say: Who he/she is; How you got to know him/her; How long you have known each other; And explain why he/she is important to you.",
-            basics: { "侧写": "Leo, 卫衣, 沉默寡言但极其靠谱。", "重点": "分享雨伞的初见细节与困难时刻的无声支持。" },
-            vocab: [{w: "Through thick and thin", m: "患难与共"}, {w: "Kindred spirit", m: "志趣相投"}, {w: "Invaluable advice", m: "宝贵建议"}],
-            simple: "Actually, to be honest, I have many friends, but if I have to choose the most important one, it would definitely be my friend Leo. We have known each other for about eight years now, which is a very long time. I remember it so clearly because we first met in high school on a very rainy afternoon. I had forgotten my umbrella and I was standing there, looking at the rain. Suddenly, a boy walked up and asked if I wanted to share his umbrella. That was Leo. We realized we both liked the same music and games. Leo is important because he is always there through thick and thin. For example, last year I failed a big exam. I felt like a loser. Leo didn't give me a long speech. Instead, he just came to my house with my favorite bubble tea and we sat in silence for a long time. Then he helped me plan how to study. He is a man of few words, but he is the most reliable person I know. I guess he is more like a brother to me now. I really cherish our friendship because I know he will always stand by me. We still stay in touch every day even though we are in different cities now. I can always count on him for honest advice.",
-            advanced: "I’d like to describe Leo, a person I consider a kindred spirit and a cornerstone of my life. Our friendship dates back to a gloomy afternoon eight years ago. I remember the rhythmic sound of heavy rain while I stood stranded at school. Leo, an introverted classmate, approached me and quietly offered to share his umbrella. That simple act of kindness was the catalyst for a bond that has only strengthened over a decade. What makes Leo indispensable is his unwavering support. He is truly a man of few words, yet his actions possess a profound depth. A perfect illustration was during a period of intense self-doubt last year. While many offered cliché encouragement, Leo provided a silent, supportive presence, helping me navigate my academic pressure with practical solutions. Our relationship is built on mutual respect and loyalty. Despite occasional personality clashes, we’ve stayed in touch through every major life transition. He has deeply influenced my perspective on what it means to be a reliable friend. To me, Leo isn't just a companion; he is a pillar of strength who has stood by me through thick and thin. I honestly cannot imagine my journey without his steady influence and invaluable advice."
-        },
-        oldPerson: {
-            title: "Describe an interesting old person you know",
-            cue: "You should say: Who this person is; How you know this person; What you do with this person; And explain why you think this person is interesting.",
-            basics: { "侧写": "邻居李爷爷, 70多岁, 精通黑科技。", "重点": "打破老人落伍的刻板印象, 终身学习的态度。" },
-            vocab: [{w: "Young at heart", m: "心态年轻"}, {w: "Tech-savvy", m: "精通技术"}, {w: "Lifelong learner", m: "终身学习者"}],
-            simple: "I’d like to talk about an interesting old person I know, who is my neighbor, Grandpa Li. He is in his late 70s now, but he is so energetic. I’ve known him for five years since I moved to my apartment. At first, I just saw him gardening, but later we became good friends. What we usually do is talk about technology. This sounds strange, but Grandpa Li is very tech-savvy. He even taught me how to edit photos! He also has a green thumb, so I help him water flowers while he tells me stories about his life as a teacher. I think he is interesting because he breaks the stereotype of old people. He is a lifelong learner who always keeps up with the times. For example, he recently learned guitar from YouTube. He is always optimistic and full of curiosity. Whenever I feel stressed, his stories make me feel relaxed. He has so much experience but is never bossy. I really admire his attitude and hope I can be as vibrant as him when I’m old. He is a perfect example of staying curious about the world regardless of age.",
-            advanced: "I’d like to describe an extraordinary individual, my neighbor Grandpa Li. Despite being in his late 70s, he is remarkably young at heart and possesses a vitality that puts many younger people to shame. We crossed paths in our building’s garden, and he has since become a mentor to me. What sets him apart is his insatiable curiosity and the fact that he is incredibly tech-savvy. While his peers struggle with gadgets, Grandpa Li experiments with coding and photo editing. Our interactions are a blend of traditional wisdom and modern innovation. I find him immensely interesting because he consistently challenges the negative stereotypes associated with aging. He refuses to be left behind by the rapid pace of society. His sense of humor is infectious, and his stories offer a profound perspective on life. He is down-to-earth yet deeply knowledgeable, offering inspiring advice without being overbearing. Knowing him has been an enlightening experience, as he demonstrates that age is merely a number. He is, without a doubt, the most inspiring senior citizen I’ve ever met, proving that a vibrant mind can remain engaged forever."
-        },
-        traditional: {
-            title: "Describe an interesting traditional story",
-            cue: "You should say: What the story is about; When/how you knew it; Who told you the story; And explain how you felt when you first heard it.",
-            basics: { "故事": "白蛇传 (The Legend of White Snake)。", "细节": "西湖断桥, 祖母的摇椅, 传统的偏见。" },
-            vocab: [{w: "Passed down", m: "代代相传"}, {w: "Folklore", m: "民间传说"}, {w: "Forbidden love", m: "禁忌之恋"}],
-            simple: "Actually, to be honest, I’ve heard many traditional stories, but the most interesting one is 'The Legend of the White Snake'. My grandmother used to tell me this story every summer holiday. We would sit in her old wooden chair and she would talk while the sun went down. The story is about a powerful snake spirit who turns into a beautiful woman and falls in love with a kind man named Xu Xian. They are very happy until a mean monk named Fahai tries to separate them because she isn't human. He finally traps her under a pagoda. When I first heard this at age six, I felt very angry and sad. I cried because I thought it was unfair. I couldn't understand why the monk was so mean. Now that I’m older, I realize the story is symbolic. It’s about fighting for love and facing prejudice. It’s a huge part of our cultural heritage and has been passed down for centuries. I guess I will tell this story to my own children in the future, just like my grandma did. It’s a captivating tale that really shows the power of the human spirit.",
-            advanced: "I’d like to recount a cornerstone of Chinese folklore known as 'The Legend of the White Snake'. This captivating tale was introduced to me by my grandmother as a bedtime story. I recall being mesmerized by her descriptions of misty rain on the Broken Bridge—a setting that felt almost mythological. The narrative centers on a supernatural romance between a snake spirit and a mortal man. Their forbidden love is met with fierce opposition from a rigid monk who represents the cold weight of tradition. The conflict reaches a tragic climax when the heroine is imprisoned beneath a pagoda. When I first heard this, it struck a deep emotional resonance. As a child, I was heartbroken by the injustice, but as an adult, I appreciate its profound symbolic depth. It explores the tension between individual desire and social boundaries. The White Snake is a symbol of sacrifice and the indomitable spirit. This story has survived for centuries because its moral—that love should transcend boundaries—is universal. It remains an iconic piece of our heritage, continuing to inspire modern adaptations. It’s a powerful reminder to challenge our prejudices."
-        },
-        famous: {
-            title: "Describe a famous person you would like to meet",
-            cue: "You should say: Who this person is; What this person is famous for; What you would like to do if you met this person; And explain why you would like to meet this person.",
-            basics: { "人物": "Elon Musk (埃隆·马斯克)。", "重点": "远见、韧性、对失败的独特看法。" },
-            vocab: [{w: "Visionary", m: "远见卓识"}, {w: "Resilience", m: "韧性"}, {w: "Think big", m: "志向远大"}],
-            simple: "Actually, there are many famous people I admire, but if I could meet one, it would be Elon Musk. Everyone knows him—he is the CEO of Tesla and SpaceX. He is famous for his ground-breaking ideas about electric cars and rockets. I first heard about him when Tesla became popular in China. If I met him, I wouldn't just ask for a photo. I would love to have a coffee and ask how he stays so confident when everyone says his ideas are impossible. I’d also love to see his factory and how the robots work. The reason I want to meet him is that his ambition and resilience are very inspirational. Most people are afraid of failure, but he says 'failure is an option'. That really changed my mindset about my own mistakes. He is a charismatic person who wants to change the world. Even though he is a bit controversial, his work on sustainability is very important for our future. Meeting him would be a dream come true because I want to learn how to think big and tackle difficult challenges in my life. He is a true man of action.",
-            advanced: "If given the opportunity to meet any iconic figure, I would choose Elon Musk, the visionary entrepreneur behind Tesla and SpaceX. He is world-renowned for his ground-breaking contributions to renewable energy and space exploration. I’ve been captivated by his career for years, not just because of his wealth, but because of his determination to turn science fiction into reality. If I were to meet him, I’d forgo the typical fan interaction. Instead, I’d love to engage in an insightful discussion regarding the future of civilization and the implications of AI. I’m curious about his resilience during the early days of SpaceX when he was on the brink of bankruptcy. The reason I’m drawn to him is his unique perspective on failure; he treats every setback as a data point. While he is a controversial figure, his charismatic leadership and ability to inspire millions to 'think big' are undeniable. I’d love to witness his daily routine firsthand. Meeting him would be a transformative experience, providing a glimpse into the mind of someone redesigning the world for future generations. His commitment to progress is profoundly inspirational."
-        },
-        building: {
-            title: "Describe an interesting or unique building",
-            cue: "You should say: Where it is; What it looks like; What it is used for; And explain why you think it is interesting.",
-            basics: { "地点": "苏州博物馆 (Suzhou Museum)。", "特点": "中西合璧、黑白灰极简、水墨画感。" },
-            vocab: [{w: "Architectural style", m: "建筑风格"}, {w: "Minimalist", m: "极简的"}, {w: "Fusion", m: "融合"}],
-            simple: "I’d like to talk about a very interesting building I visited last year, which is the Suzhou Museum. It is in the old part of Suzhou city and was designed by a famous architect. I remember it clearly because I felt like I was entering a beautiful painting. The building is low and uses a simple color scheme of black, white, and grey. It looks unique because it combines traditional Chinese gardens with modern shapes. For example, the windows are shaped like diamonds and hexagons. Inside, there is a large courtyard with a pond and rocks. When the sun shines, you see a perfect reflection in the water. It’s used to display ancient art, but the building itself is the best piece of art. I find it interesting because it shows how to keep culture alive using modern design. Most modern buildings look the same, but this museum has a special soul. It feels quiet and peaceful, a great place to escape city life. I spent four hours there taking photos of shadows and light. It really changed my idea of what a museum should look like. It’s a harmonious blend of old and new.",
-            advanced: "I’d like to describe the Suzhou Museum, an architectural masterpiece that encapsulates the fusion of traditional Chinese aesthetics and modern minimalist design. Designed by I.M. Pei, it’s located in Suzhou’s historic district. Its departure from conventional museum design is striking; instead of an imposing structure, it features low-rise pavilions that blend into the ancient gardens. The visual impact is sophisticated, utilizing a monochrome palette that creates a timeless feel. Geometric shapes allow natural light to filter into the galleries in a poetic way. One interesting feature is the 'water garden' where the pond acts as a giant mirror. This building is a dialogue between the past and present. I find it fascinating because it manages to be cutting-edge without losing its historical soul. The harmony between sharp modern lines and the soft traditional landscape is breathtaking. Every visit impresses me with the use of light and shadow to create a tranquil atmosphere. It’s a brilliant example of respecting cultural heritage while embracing the future. For anyone interested in design, it is an absolute must-see that offers a profound aesthetic experience."
+            basics: {
+                "侧写细节": "Leo, 穿着卫衣、声音平静。不张扬但极其靠谱。",
+                "核心逻辑": "对比：平日里的平淡相处 vs. 关键时刻的无声支持（Show, not tell）。"
+            },
+            vocab: [
+                {w: "Through thick and thin", m: "患难与共"}, {w: "A man of few words", m: "沉默寡言的人"},
+                {w: "Kindred spirit", m: "志趣相投的人"}, {w: "Struck up a conversation", m: "开启对话"},
+                {w: "Unwavering support", m: "坚定的支持"}, {w: "Invaluable advice", m: "宝贵的建议"},
+                {w: "Reliable", m: "可靠的"}, {w: "A shoulder to cry on", m: "依靠的肩膀"},
+                {w: "Lifelong friend", m: "终身好友"}, {w: "Mutual respect", m: "互相尊重"},
+                {w: "Personality clash", m: "性格冲突"}, {w: "Soulmate", m: "灵魂伴侣"},
+                {w: "Supportive", m: "支持性的"}, {w: "Stood by me", m: "支持我"},
+                {w: "Stay in touch", m: "保持联系"}, {w: "Academic pressure", m: "学业压力"},
+                {w: "Deeply influence", m: "深远影响"}, {w: "Loyalty", m: "忠诚"},
+                {w: "Introverted", m: "内向的"}, {w: "Cornerstone", m: "基石"}
+            ],
+            simple: "Well, to be honest, I have many friends from school and university, but if I have to choose the most important one, it would definitely be my friend Leo. We have known each other for about eight years now, which feels like a very long time. I remember it so clearly because we first met in the high school cafeteria on a very gloomy and rainy afternoon. I had forgotten my umbrella at home, and I was standing at the school gate, feeling quite miserable because I didn't want to get soaked. Suddenly, a boy walked up to me and quietly asked if I wanted to share his umbrella. That was Leo. We started walking together and realized we shared the same interests in music and gaming. \n\nLeo is important to me because he is always there through thick and thin. For example, last year I had a lot of academic pressure and I actually failed a very important exam. I felt like a total loser. Leo didn't give me a boring speech or tell me 'it’s okay'. Instead, he just came to my house with my favorite bubble tea and we sat in silence for a long time. Then he helped me plan how to study again. He is a man of few words, but he is the most reliable person I know. He always gives me invaluable advice when I’m confused. I guess he is more like a brother to me now. I really cherish our friendship because I know that no matter what happens, he will always stand by me. We still stay in touch every day even though we are in different cities now, and I really hope we can be friends forever.",
+            advanced: "I’d like to recount my relationship with Leo, a person I consider a kindred spirit and a true cornerstone of my life. Our paths first crossed during a rain-soaked afternoon in high school eight years ago. I remember the rhythmic sound of heavy rain hitting the roof while I stood stranded at the exit. Leo, an introverted classmate I’d barely spoken to, approached me and offered to share his umbrella. That simple act of kindness was the catalyst for a bond that has only strengthened over nearly a decade. \n\nWhat makes Leo indispensable to me is his unwavering support and his rare ability to provide a shoulder to cry on without being overbearing. He is truly a man of few words, yet his actions possess a depth that I find profoundly moving. A perfect illustration of this was during a period of intense self-doubt last year. While others offered cliché encouragement, Leo provided a silent, supportive presence, helping me navigate my academic failures with practical solutions rather than empty words. Our friendship is built on a foundation of mutual respect and shared loyalty. Despite the occasional personality clash, we’ve managed to stay in touch through every major life transition. He has deeply influenced my perspective on what it means to be a reliable friend. To me, Leo isn't just a companion; he is a pillar of strength who has stood by me through thick and thin. I honestly cannot imagine my journey through my twenties without his steady influence and his invaluable, honest advice."
         },
         info: {
             title: "Describe a time when you needed to search for information",
             cue: "You should say: What info you searched for; When/where you searched for it; And explain why you needed to search for it.",
-            basics: { "场景": "深夜停电、由于DDL临近而极度焦虑。", "重点": "低电量、慢网速下的信息整合能力。" },
-            vocab: [{w: "Sudden blackout", m: "突然停电"}, {w: "Race against the clock", m: "争分夺秒"}, {w: "Resourceful", m: "足智多谋"}],
-            simple: "Well, to be honest, I search for info every day, but one time I won't forget was three months ago. It was a cold Tuesday night. I was at home, preparing a final assignment due at midnight. It was 10:30 PM. Suddenly, the lights went out—a total blackout! My Wi-Fi stopped and I realized the neighborhood lost power. I was panic-stricken because I hadn't finished my research. My phone only had 15% battery. I could see the red icon and started to have cold sweat. I had to use slow mobile data to search for dates and names for my essay. I was racing against the clock. Usually, I find things in seconds, but that night I had to sift through many websites while my phone warned me about low power. My fingers were shaking. I needed that info because my grade depended on it. After 40 minutes of frantic searching, I finally submitted it. Then my phone died. I sat in the dark feeling a huge sense of relief. It was a scary experience, but it taught me to finish work earlier and not wait until the last minute. Technology is great but we are vulnerable when it fails.",
-            advanced: "I’d like to recount a high-pressure situation last semester when I searched for information under difficult circumstances. It was the eve of my final thesis submission when a sudden blackout plunged my apartment into darkness. The silence was deafening. My router was dead, and my laptop’s battery was depleting. I felt a surge of adrenaline—I was panic-stricken. With a deadline at midnight, I relied on my smartphone’s dwindling battery and unstable mobile connection. I had to sift through fragmented info to find specific economic statistics. The contrast between my earlier calm environment and this frantic race was jarring. I remember being hunched over in the pitch-black room, eyes straining against the blue light. I had to filter out irrelevant noise and synthesize data while my battery dropped to 5%. This experience highlighted our total dependency on digital reliability. I had to be extremely resourceful. When I finally submitted the file moments before my phone died, I felt an overwhelming relief. It was a stark reminder of how indispensable the internet is and how vulnerable we are when technology fails at the most inconvenient moment."
+            basics: {
+                "侧写细节": "漆黑的房间、发红的低电量图标、手心的冷汗。",
+                "核心逻辑": "对比：平时Wi-Fi的理所当然 vs. 断网断电时的极度焦虑。"
+            },
+            vocab: [
+                {w: "Sudden blackout", m: "突发停电"}, {w: "Race against the clock", m: "争分夺秒"}, 
+                {w: "Pitch black", m: "漆黑一片"}, {w: "Critical deadline", m: "关键截止日期"},
+                {w: "Sift through", m: "筛选/搜寻"}, {w: "Reliability", m: "可靠性"},
+                {w: "Fragmented information", m: "碎片化信息"}, {w: "Panic-stricken", m: "惊慌失措的"},
+                {w: "Indispensable", m: "必不可少的"}, {w: "Streamline", m: "简化效率"},
+                {w: "Technical glitch", m: "技术故障"}, {w: "Academic research", m: "学术研究"},
+                {w: "Filter out", m: "过滤"}, {w: "A sense of relief", m: "宽慰感"},
+                {w: "Mobile data", m: "移动流量"}, {w: "Synthesize", m: "综合/合成"},
+                {w: "Frantic", m: "焦急的"}, {w: "Verification", m: "核实"},
+                {w: "Search query", m: "搜索查询"}, {w: "Resourceful", m: "足智多谋的"}
+            ],
+            simple: "Well, to be honest, I search for information every single day on my phone, but there was one specific time that I will never forget because it was so stressful. It was about three months ago, on a very cold Tuesday night. I was at home, sitting at my desk and preparing for a very important final assignment. I had to finish it by midnight, and it was already 10:30 PM. Suddenly, every light in my house went out—a total blackout. My Wi-Fi stopped working immediately, and I realized my neighborhood had lost power. \n\nI was absolutely panic-stricken because I hadn't finished my research. I only had my smartphone, and the battery was at only 15%. I could see that glowing red battery icon, and I started to have cold sweat. I had to use my mobile data, which was very slow, to search for the specific dates and names I needed for my essay. I was racing against the clock. Usually, I can find things in a few seconds, but that night, I had to sift through many websites to find reliable data while my phone kept warning me about low power. I was typing so fast that my fingers were almost shaking. I needed that information because my whole grade depended on this submission. After about 40 minutes of frantic searching, I finally found what I needed and uploaded my work using my phone. When I finally clicked 'submit', my phone died. I sat there in the dark for a long time, feeling a huge sense of relief. It was a very scary experience, but it taught me to always finish my work earlier and not wait until the last minute.",
+            advanced: "I’d like to recount a high-pressure situation last semester when I was forced to search for information under incredibly difficult circumstances. It was the eve of my final thesis submission, and I was in the middle of a complex data verification process when a sudden blackout plunged my apartment into absolute darkness. The silence that followed was deafening. My router was dead, and my laptop’s battery was rapidly depleting. I felt a surge of adrenaline, but not the good kind—I was genuinely panic-stricken. \n\nWith a critical deadline looming at midnight, I had to rely entirely on my smartphone’s dwindling battery and a very unstable mobile connection. I was forced to sift through a vast amount of fragmented information on the web to find the specific economic statistics I needed. The contrast between the organized, calm research environment I had earlier that day and this frantic race against the clock was jarring. I remember being hunched over in the pitch-black room, my eyes straining against the harsh blue light of the screen, desperately typing search queries. I had to filter out a lot of irrelevant noise and synthesize the core data points while my phone battery dropped to 5%. This experience was profoundly enlightening; it highlighted our total dependency on digital reliability. I had to be extremely resourceful, using every second wisely. When I finally managed to submit the file, just moments before my phone turned off, I felt an overwhelming sense of relief. It was a stark reminder of how indispensable the internet has become, and how vulnerable we are when technology fails us at the most inconvenient moment."
         },
         animal: {
             title: "Describe a wild animal that you want to know more about",
             cue: "You should say: What it is; When/where you saw it; Why you want to know more about it; And explain what you want to know more about it.",
-            basics: { "动物": "Snow Leopard (雪豹)。", "重点": "伪装大师、高海拔生存、对环境变化的担忧。" },
-            vocab: [{w: "Natural habitat", m: "自然栖息地"}, {w: "Master of camouflage", m: "伪装大师"}, {w: "Elusive", m: "行踪诡秘"}],
-            simple: "Actually, to be honest, I'm not a big fan of all animals, but I’ve been interested in the Snow Leopard for a long time. I first saw it in a documentary when I was ten. I was sitting on my sofa eating snacks, and my dad turned on the TV. At first, it just looked like grey rocks and snow. I thought it was boring, but then my dad said, 'Wait, look!' Suddenly, a part of the 'rock' moved and I realized it was a giant cat. I was shocked because I couldn't see it at all before it moved. It has thick, grey fur that blends into the background perfectly. It looks like it’s wearing an invisibility cloak. That moment piqued my curiosity. I want to know more about how they survive in cold places without human help. I also wonder about their long tail and if they use it as a blanket. I read they are endangered, so I’m worried. I want to learn how to protect their habitat. If I can, I want to visit a research center to see more photos. It’s such a mysterious and beautiful creature. I want to learn every detail about their lives and how they hunt in the silent mountains.",
-            advanced: "I’d like to recount my fascination with the Snow Leopard, often called the 'Ghost of the Mountains' due to its elusive nature. My obsession began a decade ago while watching a high-definition documentary. I recall a scene where the camera focused on rugged terrain for two minutes. To my eye, it was merely static stones. However, a slight twitch of a tail revealed the majestic predator, and I was breathless. It was a masterclass in natural camouflage. This visual impact is why I’m dying to delve deeper into their world. I’m captivated by their physiological adaptations—how their oversized paws act as snowshoes and their long tails provide balance on cliffs. Beyond physical traits, I find their solitary lifestyle in the hostile Himalayas to be heroic and lonely. I want to understand the drive of a solitary apex predator. I am also deeply concerned about their vulnerable status due to climate change. I want to explore population trends and conservation efforts to mitigate human-wildlife conflict. The idea that such a beautiful creature could vanish is heartbreaking. For me, the Snow Leopard represents the ultimate mystery of nature, and I feel a strong desire to advocate for its protection."
-        },
-        watersport: {
-            title: "Describe a water sport you would like to try in the future",
-            cue: "You should say: What it is; Where you would like to try it; Whether it is difficult; And explain why you would like to try it.",
-            basics: { "项目": "Scuba Diving (水肺潜水)。", "重点": "无重力感、水下的绝对宁静、跨越恐惧。" },
-            vocab: [{w: "Bucket list", m: "清单"}, {w: "Weightless", m: "无重力"}, {w: "Tranquility", m: "宁静"}],
-            simple: "Well, to be honest, I’m not a professional swimmer, but scuba diving is at the top of my bucket list. I’ve been interested in this since I saw an ocean movie as a teenager. I’d love to try it in a place where the water is crystal clear, like Thailand or the Great Barrier Reef. I want to see vibrant coral reefs and colorful fish with my own eyes. I think it will be difficult and scary at first. You have to use heavy equipment like an oxygen tank and learn to breathe underwater, which isn't natural. I’ll definitely need professional training. I might feel panic-stricken at the beginning. However, the reason I want to try it is the sense of freedom. I want to feel weightless, like I’m flying in a blue universe. My city life is very noisy, so diving into the silent underwater world would give me tranquility. I want to step out of my comfort zone and see what the world looks like under the sea. I guess it will be an exhilarating and unforgettable experience. I’m planning to save money and take a diving course next summer. I hope I can overcome my fear of deep water.",
-            advanced: "A water sport that has occupied the summit of my bucket list is scuba diving. Ideally, I’d like to take the plunge in the Great Barrier Reef, a location renowned for staggering biodiversity. The prospect of immersing myself in that vibrant world is utterly captivating. I’ve been drawn to the transition from the noisy surface to a silent, deep-blue universe where the only sound is the rhythm of your breathing. Admittedly, scuba diving is not for the faint-hearted. It requires a leap of faith and rigorous training to master equipment and buoyancy. Learning to breathe through a regulator in an alien environment is a formidable challenge. However, that’s why I find it exhilarating. I crave the sensation of being 'weightless'—moving in a way impossible on land. The contrast between my structured life and the unpredictable beauty of the reefs drives my curiosity. I want to witness firsthand the intricate ecosystems most people only see in documentaries. For me, scuba diving represents the ultimate way to step out of my comfort zone. It’s not just about an adrenaline rush; it’s about a profound shift in perspective. To be suspended in crystal-clear water, surrounded by mystery, would be an enlightening experience that stays with me forever."
+            basics: {
+                "侧写细节": "雪山中的灰色影子，与岩石融为一体。长长的尾巴。",
+                "核心逻辑": "通过“看不见”来侧写伪装的强大。从童年的好奇延伸到成年的保护意识。"
+            },
+            vocab: [
+                {w: "Natural habitat", m: "自然栖息地"}, {w: "Blend into", m: "融为一体"}, 
+                {w: "Master of camouflage", m: "伪装大师"}, {w: "Endangered status", m: "濒危状态"},
+                {w: "Pique my curiosity", m: "勾起好奇心"}, {w: "Apex predator", m: "顶级掠食者"},
+                {w: "Elusive", m: "行踪诡秘的"}, {w: "Breathtaking", m: "惊人的"},
+                {w: "Solitary", m: "独居的"}, {w: "Invisibility cloak", m: "隐身衣"},
+                {w: "Stealthy", m: "悄无声息的"}, {w: "Vulnerable", m: "脆弱的"},
+                {w: "Rugged terrain", m: "崎岖地形"}, {w: "Nature conservation", m: "自然保护"},
+                {w: "Striking", m: "引人注目的"}, {w: "High-altitude", m: "高海拔"},
+                {w: "Stalk", m: "潜行追踪"}, {w: "Biodiversity", m: "生物多样性"},
+                {w: "Mythical", m: "神话般的"}, {w: "Physiological", m: "生理的"}
+            ],
+            simple: "Actually, to be honest, I'm not a big fan of all animals, but there is one wild animal that I’ve been really interested in for a long time, and that is the Snow Leopard. I remember it so clearly because I first saw it in a nature documentary on TV when I was about ten years old. I was sitting on my sofa, eating some snacks, and my dad turned on the channel. At first, the screen just showed a lot of grey rocks and snow in the mountains. I thought it was a bit boring, but then, my dad said, 'Wait, look!' Suddenly, a part of the 'rock' started moving, and I realized it was a giant cat. \n\nI was so shocked because I couldn't see it at all before it moved. It has this thick, smoky-grey fur that helps it blend into the background perfectly. It looked like it was wearing an invisibility cloak. That moment really piqued my curiosity. I want to know more about how they survive in such cold and high places without any help from humans. I also want to know more about their tail, because in the video, it looked very long and heavy, and I wonder if they use it like a blanket when they sleep. Actually, I also read that they are an endangered species, so I’m quite worried about them. I want to learn what we can do to protect their natural habitat. If I have the chance in the future, I really want to go to a museum or a research center to see more videos of them. It's just such a mysterious and beautiful creature that I can't stop thinking about it. I guess that’s why I want to learn every little detail about their lives and how they hunt in the silent snow.",
+            advanced: "I’d like to recount my fascination with the Snow Leopard, a creature often referred to as the 'Ghost of the Mountains' due to its incredibly elusive nature. My obsession began nearly a decade ago while watching a high-definition documentary. I vividly recall a particular scene where the camera focused on a rugged, snowy terrain for almost two minutes. To my untrained eye, it was merely a landscape of static stones and shadows. However, the moment a slight twitch of a tail revealed the majestic predator, I was utterly breathless. It was a masterclass in natural camouflage. \n\nThis striking visual impact is precisely why I’m dying to delve deeper into their world. I’m particularly captivated by their physiological adaptations—specifically, how their oversized paws act as natural snowshoes and how their exceptionally long tails provide balance on sheer, vertical cliffs. Beyond their physical traits, I find their solitary lifestyle in the hostile environment of the Himalayas to be both heroic and profoundly lonely. I want to understand the drive of a solitary apex predator. Furthermore, I am deeply concerned about their vulnerable status in the face of climate change. I want to explore the data behind their population trends and the specific conservation efforts being made to mitigate human-wildlife conflict. The idea that such a stealthy, beautiful creature could vanish into the mist forever is a heartbreaking thought. I want to learn more about the scientific methods used to track them, as they are so difficult to spot. For me, the Snow Leopard represents the ultimate mystery of the natural world, and I feel a strong desire to advocate for its protection."
         }
     };
 
     function loadTopic(id) {
-        const topic = topics[id];
+        const topic = topics[id] || topics['friend'];
         const app = document.getElementById('app');
+        
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
         const activeNav = Array.from(document.querySelectorAll('.nav-item')).find(el => el.getAttribute('onclick').includes(id));
         if(activeNav) activeNav.classList.add('active');
 
         let basicsHtml = '';
-        for (let k in topic.basics) basicsHtml += `<li><strong>${k}:</strong> ${topic.basics[k]}</li>`;
-        let vocabHtml = topic.vocab.map(v => `<div class="vocab-item"><span class="vocab-word">${v.w}</span> ${v.m}</div>`).join('');
+        for (let k in topic.basics) {
+            basicsHtml += `<li><strong>${k}:</strong> ${topic.basics[k]}</li>`;
+        }
+
+        let vocabHtml = '';
+        topic.vocab.forEach(v => {
+            vocabHtml += `<div class="vocab-item"><span class="vocab-word">${v.w}</span> ${v.m}</div>`;
+        });
 
         app.innerHTML = `
-            <div class="section-header"><h1 style="font-size:2.2rem; color:var(--bg-sidebar); font-weight:800">${topic.title}</h1></div>
-            <div class="cue-box"><p style="margin:0; color:#6b21a8; font-size:15px; line-height:1.6"><strong>题目内容:</strong> ${topic.cue}</p></div>
-            <div class="grid-layout">
-                <div class="card"><h3>🔍 逻辑侧写建议</h3><ul style="padding-left:18px; line-height:2; color:#475569; font-size:14px">${basicsHtml}</ul></div>
-                <div class="card"><h3>📚 自然表达库</h3><div class="vocab-grid">${vocabHtml}</div></div>
+            <div class="section-header">
+                <h1 style="font-size:2.2rem; color:var(--bg-sidebar); font-weight:800">${topic.title}</h1>
             </div>
-            <div class="script-box"><span class="badge b-simple">初级篇 (Standard - 300字)</span><div class="script-content">${topic.simple.replace(/\n/g, '<br>')}</div><div class="word-counter"><span>字数: ~${topic.simple.split(' ').length} words</span><span>时长: 2分15秒</span></div></div>
-            <div class="script-box"><span class="badge b-adv">进阶篇 (Advanced - 350字)</span><div class="script-content">${topic.advanced.replace(/\n/g, '<br>')}</div><div class="word-counter"><span>字数: ~${topic.advanced.split(' ').length} words</span><span>时长: 2分30秒</span></div></div>
+
+            <div class="cue-box">
+                <p style="margin:0; color:#6b21a8; font-size:15px; line-height:1.6"><strong>题目内容:</strong> ${topic.cue}</p>
+            </div>
+
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>🔍 逻辑侧写建议</h3>
+                    <span class="tag">叙事重点</span>
+                    <ul style="padding-left:18px; line-height:2; color:#475569; font-size:14px">
+                        ${basicsHtml}
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>📚 自然表达库 (20+)</h3>
+                    <span class="tag">地道搭配</span>
+                    <div class="vocab-grid">
+                        ${vocabHtml}
+                    </div>
+                </div>
+            </div>
+
+            <div class="script-box">
+                <span class="badge b-simple">初级篇 (Standard - 300字)</span>
+                <div class="script-content">${topic.simple.replace(/\n/g, '<br>')}</div>
+                <div class="word-counter">
+                    <span>字数: ~${topic.simple.split(' ').length} words</span>
+                    <span>时长建议: 2分15秒 (语速适中)</span>
+                </div>
+            </div>
+
+            <div class="script-box">
+                <span class="badge b-adv">进阶篇 (Advanced - 340字)</span>
+                <div class="script-content">${topic.advanced.replace(/\n/g, '<br>')}</div>
+                <div class="word-counter">
+                    <span>字数: ~${topic.advanced.split(' ').length} words</span>
+                    <span>时长建议: 2分25秒 (含停顿)</span>
+                </div>
+            </div>
         `;
         resetTimer();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    let timer, timeLeft = 120, isRunning = false;
+    // 计时器逻辑
+    let timer;
+    let timeLeft = 120;
+    let isRunning = false;
+
     function toggleTimer() {
-        if (isRunning) { clearInterval(timer); document.querySelector('.t-start').innerText = '继续计时'; }
-        else { timer = setInterval(() => { if (timeLeft <= 0) { clearInterval(timer); alert("时间到！"); resetTimer(); return; } timeLeft--; updateTimerDisplay(); }, 1000); document.querySelector('.t-start').innerText = '暂停'; }
+        if (isRunning) {
+            clearInterval(timer);
+            document.querySelector('.t-start').innerText = '继续计时';
+        } else {
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("时间到！");
+                    resetTimer();
+                    return;
+                }
+                timeLeft--;
+                updateTimerDisplay();
+            }, 1000);
+            document.querySelector('.t-start').innerText = '暂停';
+        }
         isRunning = !isRunning;
     }
-    function resetTimer() { clearInterval(timer); timeLeft = 120; isRunning = false; updateTimerDisplay(); document.querySelector('.t-start').innerText = '开始计时'; }
-    function updateTimerDisplay() { const mins = Math.floor(timeLeft / 60), secs = timeLeft % 60; document.getElementById('timer-display').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`; }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timeLeft = 120;
+        isRunning = false;
+        updateTimerDisplay();
+        document.querySelector('.t-start').innerText = '开始计时';
+    }
+
+    function updateTimerDisplay() {
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        document.getElementById('timer-display').innerText = 
+            `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
 
     window.onload = () => loadTopic('friend');
 </script>
