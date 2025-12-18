@@ -1,28 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Speaking Part 2 - Complete Teacher's Kit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>雅思口语 Pro - 满分逻辑练习室</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4338ca;
-            --primary-light: #e0e7ff;
-            --secondary: #0891b2;
+            --secondary: #0ea5e9;
             --accent: #f59e0b;
-            --bg: #f8fafc;
+            --bg-dark: #0f172a;
             --card-bg: #ffffff;
-            --text-dark: #1e293b;
+            --text-main: #1e293b;
             --text-muted: #64748b;
-            --simple-color: #059669;
-            --advanced-color: #7c3aed;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background: #f1f5f9;
+            color: var(--text-main);
             margin: 0;
             display: flex;
         }
@@ -31,130 +28,112 @@
         .sidebar {
             width: 280px;
             height: 100vh;
-            background: #1e293b;
+            background: var(--bg-dark);
             color: white;
             position: fixed;
             overflow-y: auto;
-            padding: 20px 0;
             z-index: 100;
         }
 
-        .sidebar h2 {
-            padding: 0 20px;
-            font-size: 1.2rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .sidebar-header { padding: 30px 20px; border-bottom: 1px solid #334155; }
+        .sidebar-header h2 { margin: 0; font-size: 1.5rem; color: var(--secondary); }
 
-        .nav-group { margin-bottom: 25px; }
+        .nav-group { padding: 20px 0; }
+        .nav-label { padding: 0 20px 10px; font-size: 12px; color: #94a3b8; font-weight: bold; letter-spacing: 1px; }
         .nav-item {
-            padding: 12px 20px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.2s;
-            display: block;
-            color: #cbd5e1;
-            text-decoration: none;
-            border-left: 4px solid transparent;
+            padding: 12px 25px; cursor: pointer; font-size: 14px; transition: 0.3s;
+            display: block; color: #cbd5e1; text-decoration: none; border-left: 4px solid transparent;
         }
-        .nav-item:hover { background: #334155; color: white; }
-        .nav-item.active { background: #334155; color: white; border-left: 4px solid var(--accent); }
+        .nav-item:hover { background: #1e293b; color: white; }
+        .nav-item.active { background: #334155; color: white; border-left-color: var(--accent); }
 
-        /* 主内容区 */
-        .main-content {
-            margin-left: 280px;
-            padding: 40px;
-            width: calc(100% - 280px);
-            min-height: 100vh;
-        }
+        /* 主区域 */
+        .main-content { margin-left: 280px; padding: 40px; width: calc(100% - 280px); }
 
-        /* 计时器悬浮窗 */
+        /* 计时器悬浮 */
         .timer-box {
-            position: fixed;
-            top: 30px;
-            right: 40px;
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            z-index: 1000;
-            border: 1px solid #e2e8f0;
+            position: fixed; top: 30px; right: 40px; background: white;
+            padding: 20px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center; z-index: 1000; border: 1px solid #e2e8f0;
         }
-        #timer-display { font-size: 40px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; }
-        .timer-ctrl { display: flex; gap: 10px; margin-top: 10px; }
-        .t-btn { padding: 6px 12px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 12px; }
+        #timer-display { font-size: 48px; font-weight: 800; color: var(--primary); font-family: 'Courier New', monospace; }
+        .t-btn { margin-top: 10px; padding: 10px 20px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; }
         .t-start { background: var(--primary); color: white; }
-        .t-reset { background: #f1f5f9; color: var(--text-dark); }
+        .t-reset { background: #f1f5f9; color: var(--text-muted); margin-left: 5px; }
 
-        /* 话题卡片布局 */
-        .topic-header { margin-bottom: 30px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; }
-        .cue-card { background: #fffbeb; border: 1px dashed #f59e0b; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+        /* 内容卡片 */
+        .section-header { margin-bottom: 30px; }
+        .cue-box { background: #fffbeb; border: 2px dashed #f59e0b; padding: 25px; border-radius: 15px; margin-bottom: 30px; }
         
-        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 40px; }
-        .info-card { background: white; padding: 25px; border-radius: 18px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        h3 { margin-top: 0; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .card { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        h3 { margin-top: 0; color: var(--primary); border-left: 5px solid var(--secondary); padding-left: 15px; margin-bottom: 20px; }
 
-        .vocab-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
-        .vocab-tag { background: #f1f5f9; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0; }
+        .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .vocab-item { font-size: 13px; line-height: 1.4; padding: 8px; background: #f8fafc; border-radius: 8px; border: 1px solid #edf2f7; }
+        .vocab-word { font-weight: bold; color: var(--primary); display: block; }
 
-        .script-container { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .script-box { padding: 25px; border-radius: 18px; position: relative; }
-        .simple { background: #f0fdf4; border: 1px solid #bbf7d0; }
-        .advanced { background: #f5f3ff; border: 1px solid #ddd6fe; }
-        .badge { position: absolute; top: -12px; left: 20px; padding: 4px 12px; border-radius: 20px; color: white; font-size: 12px; font-weight: bold; }
-        .b-simple { background: var(--simple-color); }
-        .b-advanced { background: var(--advanced-color); }
+        .script-container { display: flex; flex-direction: column; gap: 30px; }
+        .script-box { padding: 35px; border-radius: 24px; line-height: 1.8; position: relative; }
+        .badge { position: absolute; top: -15px; left: 30px; padding: 6px 15px; border-radius: 30px; color: white; font-weight: bold; font-size: 14px; }
+        
+        .simple-version { background: #f0fdf4; border: 2px solid #bbf7d0; }
+        .adv-version { background: #f5f3ff; border: 2px solid #ddd6fe; }
+        .b-simple { background: #059669; }
+        .b-adv { background: #7c3aed; }
 
-        .script-content { font-size: 15px; color: #334155; line-height: 1.8; white-space: pre-wrap; }
+        .instruction-tag { color: #b45309; background: #fff7ed; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 10px; display: inline-block; }
 
-        /* 响应式 */
         @media (max-width: 1100px) {
-            .section-grid, .script-container { grid-template-columns: 1fr; }
+            .grid-layout { grid-template-columns: 1fr; }
             .sidebar { width: 220px; }
-            .main-content { margin-left: 220px; width: calc(100% - 220px); }
+            .main-content { margin-left: 220px; }
         }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
-        <h2>Topic Menu</h2>
-        <div class="nav-group">
-            <div style="padding:10px 20px; font-weight:bold; color:#94a3b8; font-size:12px">PEOPLE</div>
-            <a href="#" class="nav-item active" onclick="switchTopic('friend')">Good Friend</a>
-            <a href="#" class="nav-item" onclick="switchTopic('oldPerson')">Interesting Old Person</a>
-            <a href="#" class="nav-item" onclick="switchTopic('famous')">Famous Person</a>
-            <a href="#" class="nav-item" onclick="switchTopic('sport')">Sportsperson</a>
+        <div class="sidebar-header">
+            <h2>雅思口语 Pro</h2>
+            <p style="font-size:12px; color:#94a3b8">核心话题全覆盖系统</p>
         </div>
+        
         <div class="nav-group">
-            <div style="padding:10px 20px; font-weight:bold; color:#94a3b8; font-size:12px">PLACES</div>
-            <a href="#" class="nav-item" onclick="switchTopic('natural')">Natural Place</a>
-            <a href="#" class="nav-item" onclick="switchTopic('recommend')">Local Recommendation</a>
-            <a href="#" class="nav-item" onclick="switchTopic('building')">Interesting Building</a>
+            <div class="nav-label">人物类 (People)</div>
+            <a href="#" class="nav-item active" onclick="loadTopic('friend')">好朋友 (Jerry)</a>
+            <a href="#" class="nav-item" onclick="loadTopic('oldPerson')">有趣的老人</a>
+            <a href="#" class="nav-item" onclick="loadTopic('famous')">想见的名人</a>
+            <a href="#" class="nav-item" onclick="loadTopic('sport')">敬佩的运动员</a>
         </div>
+
         <div class="nav-group">
-            <div style="padding:10px 20px; font-weight:bold; color:#94a3b8; font-size:12px">EVENTS & MEDIA</div>
-            <a href="#" class="nav-item" onclick="switchTopic('watersport')">Water Sport (Exciting)</a>
-            <a href="#" class="nav-item" onclick="switchTopic('movie')">Funny Movie</a>
-            <a href="#" class="nav-item" onclick="switchTopic('ad')">Advertisement</a>
-            <a href="#" class="nav-item" onclick="switchTopic('novel')">Story or Novel</a>
-            <a href="#" class="nav-item" onclick="switchTopic('info')">Info Search (AI)</a>
+            <div class="nav-label">地点类 (Place)</div>
+            <a href="#" class="nav-item" onclick="loadTopic('natural')">自然风景区</a>
+            <a href="#" class="nav-item" onclick="loadTopic('recommend')">本国推荐地</a>
+            <a href="#" class="nav-item" onclick="loadTopic('building')">有趣的建筑</a>
         </div>
+
         <div class="nav-group">
-            <div style="padding:10px 20px; font-weight:bold; color:#94a3b8; font-size:12px">TOUGH TOPICS</div>
-            <a href="#" class="nav-item" onclick="switchTopic('animal')">Wild Animal</a>
-            <a href="#" class="nav-item" onclick="switchTopic('traditional')">Traditional Story</a>
+            <div class="nav-label">物品/媒体类 (Object/Media)</div>
+            <a href="#" class="nav-item" onclick="loadTopic('movie')">搞笑电影</a>
+            <a href="#" class="nav-item" onclick="loadTopic('ad')">印象深的广告</a>
+            <a href="#" class="nav-item" onclick="loadTopic('novel')">有趣的小说/故事</a>
+            <a href="#" class="nav-item" onclick="loadTopic('info')">搜寻信息 (AI)</a>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-label">事件/特殊类 (Event/Hard)</div>
+            <a href="#" class="nav-item" onclick="loadTopic('watersport')">水上运动</a>
+            <a href="#" class="nav-item" onclick="loadTopic('animal')">想了解的野生动物</a>
+            <a href="#" class="nav-item" onclick="loadTopic('traditional')">传统故事</a>
         </div>
     </nav>
 
     <div class="timer-box">
         <div id="timer-display">02:00</div>
-        <div class="timer-ctrl">
-            <button class="t-btn t-start" onclick="toggleTimer()">Start / Pause</button>
-            <button class="t-btn t-reset" onclick="resetTimer()">Reset</button>
-        </div>
+        <button class="t-btn t-start" onclick="toggleTimer()">开始 / 暂停</button>
+        <button class="t-btn t-reset" onclick="resetTimer()">重置</button>
     </div>
 
     <main class="main-content" id="app">
@@ -164,226 +143,132 @@
     const topics = {
         friend: {
             title: "Describe a good friend who is important to you",
-            cue: "You should say: Who he/she is; How/where you got to know him/her; How long you have known each other; And explain why he/she is important to you.",
+            cue: "You should say: Who he/she is; How you got to know him/her; How long you have known each other; And explain why he/she is important to you.",
             basics: {
-                "Appearance": "Tall, lean, wears casual outfits, infectious smile.",
-                "Age/Identity": "Early 20s, a college student majoring in Computer Science.",
-                "First Meeting": "In middle school, during a heated basketball match."
+                "外貌特征": "Tall and lanky (高瘦), messy hair, has a warm and infectious smile.",
+                "基础身份": "A university classmate, majoring in Game Design, early 20s.",
+                "相识场景": "Met in a crowded library during the finals week 3 years ago."
             },
-            vocab: ["Thick as thieves", "Count on someone", "Unwavering support", "Witty", "Like-minded", "Reliable", "Bond"],
-            simple: "I’d like to talk about my best friend, Jerry. He is about 22 years old, tall, and always has a friendly smile. We met in middle school about ten years ago on the basketball court. We have known each other since then. \n\nJerry is important to me because he is always there when I need help. For example, last year I failed an exam and felt very sad. He spent the whole weekend talking to me and encouraging me to try again. He is a very positive person and makes me feel confident. We share many hobbies like playing video games and hiking. He is more like a brother than just a friend.",
-            advanced: "I'd like to talk about Jerry, a person I consider my soulmate in friendship. He’s in his early twenties, possessing a lean build and a perpetually infectious smile. Our paths first crossed during a rather intense basketball tournament in middle school a decade ago. \n\nWhat makes Jerry indispensable to me is his unwavering support. He’s not just a 'fair-weather friend'; he’s someone I can count on regardless of the circumstances. Last year, when I was struggling with a personal crisis, he was my pillar of strength, offering practical advice and a listening ear. Beyond his reliability, we are incredibly like-minded, sharing a passion for technological innovation and outdoor adventures. Our bond has stood the test of time, and I truly value the intellectual stimulation he provides."
-        },
-        oldPerson: {
-            title: "Describe an old person who has an interesting life",
-            cue: "You should say: Where he/she lives; What his/her life is like; What you like to talk about with him/her; And explain why you enjoy talking to him/her.",
-            basics: {
-                "Location": "A quiet suburban neighborhood, in an old house full of books.",
-                "Current Life": "Retired history teacher, keeps a beautiful garden, plays piano daily.",
-                "Personality": "Wise, humorous, sharp-minded, great storyteller."
-            },
-            vocab: ["Wealth of experience", "Sharp as a tack", "Reminisce", "Enlightening", "Golden years", "Meticulous", "Life lessons"],
-            simple: "I want to talk about my neighbor, Mr. Wang. He lives in a small house with many flowers next to mine. He is over 70 years old, but he is very healthy. He was a history teacher before he retired. \n\nHis life is very interesting because he travels a lot and reads many books. I love talking to him about the history of our city. He tells me stories about how life was different 50 years ago. I enjoy talking to him because he is very wise and always gives me good advice. When I feel stressed about my studies, he tells me that life is a long journey and I should stay calm. He is like a walking library to me.",
-            advanced: "I’d like to describe my neighbor, Mr. Wang, a retired professor who leads a truly fascinating life. He resides in a quaint house filled with ancient scrolls and historical artifacts. Despite being in his late 70s, he remains 'sharp as a tack' and extremely active. \n\nHis daily routine is a blend of intellectual pursuit and physical gardening. We often engage in deep conversations about the socio-political changes in China over the last half-century. I find these discussions immensely enlightening because he offers a firsthand perspective on history that you can't find in textbooks. I cherish our interactions because of his wealth of experience and his ability to reminisce with such vivid detail. He taught me to appreciate the present while respecting the past."
-        },
-        famous: {
-            title: "Describe a famous person you would like to meet",
-            cue: "You should say: Who he/she is; How you knew him/her; How/where you would like to meet him/her; And explain why you would like to meet him/ her.",
-            basics: {
-                "Who": "Jia Ling, a famous Chinese director and actress.",
-                "Style": "Down-to-earth, hardworking, inspirational.",
-                "Achievement": "Directed record-breaking movies like 'Hi, Mom' and 'YOLO'."
-            },
-            vocab: ["Rise to fame", "Household name", "Resilient", "Staggering achievement", "Down-to-earth", "Inspirational figure"],
-            simple: "The famous person I really want to meet is Jia Ling. She is a very famous actress and film director in China. I first knew her from her comedy shows on TV, and later I watched her movies. \n\nIf I had the chance, I would like to meet her in a quiet cafe or perhaps after one of her film screenings. I want to ask her about how she stays so brave and positive. She lost a lot of weight for her last movie, which was very difficult. I admire her because she is very down-to-earth and she works harder than anyone else. Meeting her would be very inspirational for me because she shows that anything is possible if you never give up.",
-            advanced: "An influential figure I've long yearned to meet is Jia Ling, a household name in the Chinese film industry. I first became acquainted with her work through her early comedic performances, but it was her transition into a world-class director that truly captivated me. \n\nI would love to meet her in a professional yet relaxed setting, perhaps a film workshop, where I could delve into her creative process. My admiration for her stems from her incredible resilience and 'never-say-die' attitude. Her physical and professional transformation for her latest film was nothing short of staggering. I'm drawn to her authenticity and the way she uses humor to tackle profound life themes. To me, she represents the pinnacle of self-discipline and artistic integrity."
-        },
-        sport: {
-            title: "Describe a successful sportsperson you admire",
-            cue: "You should say: Who he/she is; What he/she is like in real life; What achievement he/she has made; And explain why you admire him/her.",
-            basics: {
-                "Who": "Zheng Qinwen, an Olympic tennis champion.",
-                "Appearance": "Athletic, sun-kissed skin, determined eyes.",
-                "Personality": "Disciplined, fierce on court, humble off court."
-            },
-            vocab: ["Mental fortitude", "Break records", "Peak performance", "Grit", "Role model", "Indomitable spirit", "Tenacity"],
-            simple: "I admire Zheng Qinwen, who is a world-class tennis player from China. She recently won a gold medal at the Olympics, which was a huge achievement. In real life, she seems very disciplined and focused on her training. \n\nI have seen many of her interviews, and she always speaks about the importance of hard work. She has broken many records for Chinese tennis. I admire her because she has great 'grit'. Even when she is losing a game, she never gives up and keeps fighting until the last minute. She is a great role model for young people because she proves that with tenacity, we can achieve our dreams on the global stage.",
-            advanced: "I’d like to talk about Zheng Qinwen, an athlete who has recently taken the tennis world by storm. After her historic gold medal victory in Paris, she has become a symbol of excellence. Off the court, she’s known to be incredibly humble yet possesses a level of self-discipline that is quite rare. \n\nHer achievements are a testament to her mental fortitude. Tennis is as much a psychological battle as a physical one, and her ability to remain composed under immense pressure is breathtaking. I admire her indomitable spirit and her 'never-give-up' attitude. She hasn't just won medals; she has inspired a whole generation to take up sports. Her journey from a young girl in Hubei to an Olympic champion is a narrative of pure tenacity."
-        },
-        natural: {
-            title: "Describe a natural place (e.g. park, mountain)",
-            cue: "You should say：Where this place is; How you knew this place; What it is like; And explain why you like to visit it.",
-            basics: {
-                "Location": "Jiuzhaigou Valley, Sichuan Province.",
-                "Atmosphere": "Serene, colorful, otherworldly.",
-                "Key Features": "Crystal clear lakes, multi-level waterfalls, snow-capped peaks."
-            },
-            vocab: ["Breathtaking scenery", "Pristine", "Crystal clear", "Escape the hustle and bustle", "Otherworldly", "Picturesque"],
-            simple: "I want to describe Jiuzhaigou, a famous national park in Sichuan. I first knew about it from a travel magazine in my school library. It is a very beautiful place with many colorful lakes and waterfalls. \n\nThe water is so clear that you can see the fish and the trees at the bottom. It looks like a fairyland. I like to visit it because the air is very fresh and it is very quiet. It is a great place to 'escape the hustle and bustle' of the city. Whenever I am there, I feel very relaxed and happy. It is definitely the most beautiful natural place I have ever seen in my life.",
-            advanced: "I’d like to talk about Jiuzhaigou Valley, a pristine natural reserve tucked away in the mountains of Sichuan. I first stumbled upon this 'slice of heaven' through a stunning documentary on National Geographic. \n\nThe scenery there is absolutely breathtaking, characterized by its multi-colored lakes and majestic waterfalls. What's most striking is the crystal clear water, which reflects the surrounding snow-capped peaks like a mirror. I'm drawn to this place because it offers a sense of tranquility that is hard to find in our modern metropolitan lives. It’s an otherworldly experience that allows one to reconnect with nature. The picturesque landscape feels almost surreal, making every visit an unforgettable memory."
-        },
-        recommend: {
-            title: "Describe a place in your country you would recommend to visitors",
-            cue: "You should say: What it is; Where it is; What people can do there; And explain why you would like to recommend it.",
-            basics: {
-                "What": "Zhujiajiao Water Town.",
-                "Location": "On the outskirts of Shanghai.",
-                "Features": "Ancient stone bridges, traditional canal boats, old tea houses."
-            },
-            vocab: ["Nostalgic", "Venice of the East", "Cultural heritage", "Hidden gem", "Gastronomic delight", "Quaint"],
-            simple: "I would recommend Zhujiajiao to any traveler coming to China. It is an ancient water town near Shanghai. People call it the 'Venice of the East'. \n\nThere are many things to do there. Visitors can take a traditional boat ride along the canals or walk across the old stone bridges. You can also visit the traditional tea houses and try local snacks like sticky rice dumplings. I recommend it because it is very nostalgic and peaceful. It shows the traditional side of China, which is very different from the modern skyscrapers in the city center. It’s a perfect place for taking photos and relaxing.",
-            advanced: "I would highly recommend Zhujiajiao Water Town to any international traveler. Located on the periphery of Shanghai, this 'quaint' town is a well-preserved cultural heritage site. \n\nIt’s often dubbed the 'Venice of the East' due to its intricate network of canals. Visitors can immerse themselves in the nostalgic atmosphere by taking a gondola-style boat trip or exploring the narrow cobblestone alleys. For foodies, it's a gastronomic delight, offering various traditional delicacies. I recommend it because it provides a stark, fascinating contrast to the ultra-modern skyline of Shanghai. It’s a 'hidden gem' that allows tourists to glimpse the soul of ancient China without traveling too far from the city."
-        },
-        building: {
-            title: "Describe an interesting building you saw during a trip",
-            cue: "You should say: Where you saw it; What it looks like; What you have known about it; And explain why you think it is interesting.",
-            basics: {
-                "Where": "Lujiazui, Shanghai.",
-                "Appearance": "Spiral shape, silver-grey glass, extremely tall.",
-                "Identity": "The Shanghai Tower."
-            },
-            vocab: ["Architectural marvel", "Futuristic", "Iconic landmark", "Skyline", "Eco-friendly", "State-of-the-art"],
-            simple: "I want to talk about the Shanghai Tower. I saw it last summer when I visited Shanghai. It is located in the financial district and it is the tallest building in China. \n\nIt looks very futuristic because it has a spiral shape, like a giant dragon going up into the sky. It is covered in glass and looks very shiny. I learned that the design helps it stand against strong winds. I think it is interesting because it’s not just a tall office building; it’s like a vertical city with gardens inside. Also, the elevator is one of the fastest in the world. Standing at the top and looking down was a very exciting experience.",
-            advanced: "I’d like to describe the Shanghai Tower, an architectural marvel I encountered during a trip to East China. Dominating the Lujiazui skyline, it is currently the second-tallest building in the world. \n\nIts appearance is truly iconic, featuring a translucent glass facade and a unique cylindrical, twisting form. This spiral design isn't merely for aesthetics; it's a state-of-the-art engineering solution to reduce wind loads. What I found particularly fascinating is its commitment to sustainability, as it incorporates various 'eco-friendly' technologies. It’s an interesting building because it represents the pinnacle of modern engineering and serves as a symbol of China’s rapid urban transformation."
-        },
-        watersport: {
-            title: "Describe a water sport you would like to try in the future",
-            cue: "You should say: What it is; Where you would like to try it; Whether it is difficult; And explain why you would like to try it.",
-            basics: {
-                "What": "Scuba Diving.",
-                "Location": "The Great Barrier Reef, Australia.",
-                "Difficulty": "Challenging, requires certification and technical skills."
-            },
-            vocab: ["Adrenaline rush", "Marine life", "Vibrant coral reefs", "Weightless", "Exhilarating", "Step out of comfort zone"],
-            simple: "In the future, I really want to try scuba diving. I would love to go to the Great Barrier Reef in Australia to do it. I think it might be quite difficult because you have to learn how to breathe under water and use the equipment. \n\nHowever, I want to try it because I am very interested in 'marine life'. I want to see the colorful fish and coral reefs with my own eyes. I think it would feel amazing to be 'weightless' under the water. It would be an 'exhilarating' experience and a great way to 'step out of my comfort zone'. I’ve seen many videos of diving, and it looks like a whole new world.",
-            advanced: "A water sport that has always been on my 'bucket list' is scuba diving. Ideally, I’d like to head to the Great Barrier Reef to experience its world-renowned biodiversity. \n\nAdmittedly, it's a challenging endeavor that requires formal training and an 'adrenaline-pumping' leap of faith. I’m eager to try it because I’ve always been captivated by the mysteries of the deep sea. The prospect of being 'weightless' while observing vibrant coral reefs and exotic marine species is incredibly alluring. For me, it’s not just about the sport; it’s about the chance to immerse myself in a completely different ecosystem and push the boundaries of my personal comfort zone."
-        },
-        movie: {
-            title: "Describe a film that made you laugh",
-            cue: "You should say: What it is; When you watched it; Who you watched it with; And explain why it made you laugh.",
-            basics: {
-                "Movie": "'Hi, Mom' (Ni Hao, Li Huanying).",
-                "Genre": "Comedy / Drama.",
-                "Story": "A girl travels back in time to meet her young mother."
-            },
-            vocab: ["Hilarious", "Witty dialogue", "Slapstick humor", "Emotional rollercoaster", "Tear-jerking", "Relatable"],
-            simple: "The movie that made me laugh a lot is called 'Hi, Mom'. I watched it two years ago during the Spring Festival with my family. It is a story about a girl who goes back in time to the 1980s. \n\nIt made me laugh because there were many 'hilarious' scenes where the main character tried to make her mother happy using modern ideas. The 'slapstick humor' was very funny. However, the movie was also very emotional at the end. I laughed because the characters were so 'relatable' and the dialogue was very witty. It’s a great film because it makes you laugh first and then makes you think about your love for your parents.",
-            advanced: "I’d like to talk about the film 'Hi, Mom', which provided one of the most 'hilarious' yet touching cinematic experiences I’ve ever had. I watched it with my parents during the Lunar New Year holiday a couple of years ago. \n\nThe film’s brilliance lies in its witty dialogue and perfectly timed 'slapstick humor'. The plot, involving time travel to the 80s, created numerous comical 'fish-out-of-water' situations. I found myself laughing uncontrollably at the protagonist's desperate attempts to improve her mother's life. It was an 'emotional rollercoaster'—one moment I was giggling at the 80s nostalgia, and the next, I was deeply moved. It's a rare masterpiece that balances rib-tickling comedy with profound family values."
-        },
-        ad: {
-            title: "Describe an advertisement you have seen recently",
-            cue: "You should say: When/where you saw it; What the product was; How you liked it; And explain how you felt about it.",
-            basics: {
-                "Ad": "Apple's 'Shot on iPhone' campaign.",
-                "Media": "Social media (TikTok/Instagram) and giant billboards.",
-                "Product": "iPhone camera."
-            },
-            vocab: ["Visually stunning", "Minimalist", "Catchy", "Memorable", "Brand loyalty", "Persuasive"],
-            simple: "I recently saw a very good advertisement for the iPhone. I saw it on a big billboard in the city center and also on social media. The advertisement didn't have many words; it just showed beautiful photos and videos. \n\nThe product was the new iPhone camera. I really liked it because it was 'visually stunning'. It showed that normal people can take professional photos using just a phone. It made me feel that I could also be a good photographer. I think it was a very 'persuasive' ad because it didn't feel like a hard sell. It felt more like an art exhibition. It definitely made me more interested in the brand.",
-            advanced: "I recently encountered a 'visually stunning' advertisement from Apple's 'Shot on iPhone' campaign. I first noticed it on a massive digital billboard in the CBD, and subsequently, it kept appearing on my social media feeds. \n\nThe ad wasn't promoting technical specs; instead, it showcased breathtaking user-generated content. I was deeply impressed by its 'minimalist' approach. It felt incredibly 'persuasive' because it focused on the end-user's experience rather than the hardware itself. It evoked a sense of creativity and aspiration in me, making me feel that with the right tool, anyone could capture professional-grade imagery. It was a 'memorable' campaign that effectively strengthened my brand loyalty through pure visual storytelling."
-        },
-        novel: {
-            title: "Describe a story or novel you have read that you found interesting",
-            cue: "You should say: When you read it; What the story was about; Who wrote it; And explain why it was interesting.",
-            basics: {
-                "Book": "'To Kill a Mockingbird' or 'The Three-Body Problem'.",
-                "Author": "Harper Lee / Liu Cixin.",
-                "Theme": "Justice, childhood, or Sci-fi."
-            },
-            vocab: ["Gripping plot", "Thought-provoking", "Character development", "Page-turner", "Immersive", "Moral lesson"],
-            simple: "I want to talk about the novel 'The Three-Body Problem' by Liu Cixin. I read it last summer during my vacation. It is a science fiction story about humans making contact with aliens. \n\nIt was very interesting because the 'plot was very gripping'. It made me think about the future of the Earth and the universe. The story is very 'thought-provoking' and it has many surprising twists. Even though some parts were a bit difficult to understand, I couldn't stop reading it—it was a real 'page-turner'. It was interesting because it mixed science with human history in a very unique way. It changed how I look at the stars at night.",
-            advanced: "A novel that I found absolutely 'gripping' is 'The Three-Body Problem' by the renowned sci-fi author Liu Cixin. I delved into this masterpiece last year, and it proved to be an 'immersive' experience. \n\nThe narrative explores the first contact between humanity and a dying alien civilization. What makes it so 'thought-provoking' is the way it blends hardcore physics with profound philosophical questions about human nature. The 'character development' is subtle yet effective, and the sheer scale of the imagination is staggering. It was a genuine 'page-turner' for me; I was constantly surprised by the plot's complexity. It’s an interesting read because it challenges your perspective on our place in the cosmos."
-        },
-        info: {
-            title: "Describe a time when you needed to search for information",
-            cue: "You should say: What info you searched for; When you searched for it; Where you searched for it; And explain why you needed to search for it.",
-            basics: {
-                "Topic": "Academic research for a school project on AI.",
-                "Tools": "Search engines (Google/Baidu) and AI tools like ChatGPT.",
-                "Goal": "To find reliable data and diverse viewpoints."
-            },
-            vocab: ["Sift through", "Reliable sources", "Wealth of information", "Efficient", "Vast", "Clarity", "Game-changer"],
-            simple: "A few months ago, I had to search for information for a school project about Artificial Intelligence. I used search engines like Google and also tried an AI tool called ChatGPT. \n\nI needed to find data about how AI is changing our daily lives. I searched for it because I wanted to write a good essay and get a high grade. The internet has a 'wealth of information', but I had to be careful to find 'reliable sources'. Using AI was a 'game-changer' because it helped me organize my ideas very quickly. It made my research much more 'efficient'. In the end, I found everything I needed and my teacher was very happy with my work.",
-            advanced: "Recently, I found myself 'sifting through' a vast amount of data for an academic research paper on the ethical implications of Artificial Intelligence. I utilized various digital platforms, ranging from scholarly databases to advanced AI-driven search tools. \n\nThe reason for this deep dive was to gain 'clarity' on a very complex and contemporary issue. In this digital age, the 'wealth of information' available can be overwhelming, so my primary challenge was to identify 'reliable sources' and peer-reviewed articles. The process was a 'game-changer' for my understanding of the subject. It was not only 'efficient' but also eye-opening to see how technology can assist in synthesizing diverse viewpoints. It was a crucial step in ensuring my paper was well-supported and comprehensive."
+            vocab: [
+                {w: "Thick as thieves", m: "形影不离"}, {w: "Through thick and thin", m: "患难与共"}, 
+                {w: "A pillar of strength", m: "精神支柱"}, {w: "Strike up a conversation", m: "搭讪/开启对话"},
+                {w: "Infectious smile", m: "有感染力的笑容"}, {w: "Soulmate", m: "灵魂伴侣"},
+                {w: "Count on someone", m: "指望某人"}, {w: "Witty", m: "机智幽默"},
+                {w: "Shared a common bond", m: "有共同语言"}, {w: "Lend an ear", m: "倾听"},
+                {w: "Backbone", m: "顶梁柱"}, {w: "Reliable", m: "可靠的"},
+                {w: "Like-minded", m: "志趣相投的"}, {w: "Stand by me", m: "支持我"},
+                {w: "Solidarity", m: "团结一致"}, {w: "Inner circle", m: "核心朋友圈"},
+                {w: "Unwavering support", m: "坚定的支持"}, {w: "Cherish the friendship", m: "珍视友谊"},
+                {w: "Kindred spirit", m: "志同道合的人"}, {w: "Mutual respect", m: "互相尊重"}
+            ],
+            simple: "I’m going to tell you about my best friend Jerry. We’ve been friends for about 4 years now. We first met in the university library during finals week. I was struggling with a computer project, and he just sat down and helped me out. \n\nWhat makes him important is how he supports me. I remember one time I failed an important interview. I was so upset that I stayed in my room all day. Jerry didn't just say 'it's okay'. He came to my place with my favorite food and stayed with me for hours. We didn't talk much, but his presence made me feel much better. He is the person I can always count on when life gets tough.",
+            advanced: "I'd like to talk about Jerry, who is essentially my 'kindred spirit'. Our friendship dates back to a chaotic finals week three years ago. I vividly remember sitting in a corner of the library, staring at a coding error for six hours, feeling completely defeated. Jerry, who was a total stranger then, noticed my frustration and struck up a conversation. \n\nHe is incredibly important to me because he acts as my 'pillar of strength'. A perfect example of this was when I faced a personal crisis last year. While others offered cliché advice, Jerry provided a listening ear and unwavering support. He has this unique ability to sense my mood without me saying a word. This emotional connection, combined with our shared passion for technology, makes our bond indestructible. He isn't just a fair-weather friend; he is the backbone of my social circle."
         },
         animal: {
             title: "Describe a wild animal that you want to know more about",
             cue: "You should say: What it is; When/where you saw it; Why you want to know more about it; And explain what you want to know more about it.",
             basics: {
-                "Animal": "The Snow Leopard.",
-                "Habitat": "High mountains of Central Asia.",
-                "Status": "Endangered, rare, 'Ghost of the Mountains'."
+                "动物名称": "Snow Leopard (雪豹), known as the 'Ghost of the Mountains'.",
+                "视觉描述": "Thick smoky-grey fur, piercing green eyes, long muscular tail.",
+                "栖息环境": "Harsh, rocky cliffs in the Himalayas."
             },
-            vocab: ["Elusive", "Apex predator", "Camouflage", "Natural habitat", "Conservation", "Biodiversity", "Fascinating"],
-            simple: "The wild animal I want to know more about is the Snow Leopard. I first saw it in a documentary on TV about a year ago. It is a beautiful animal with thick fur and a very long tail. \n\nI want to know more about it because it is very 'elusive' and rare; people call it the 'ghost of the mountains'. I want to learn how they survive in such cold and high places. Also, I want to know more about 'conservation'—how we can protect them because they are an 'endangered species'. I think they are 'fascinating' because they have perfect 'camouflage' in the snow. Learning about them makes me want to protect our nature more.",
-            advanced: "The wild animal that has piqued my curiosity is the Snow Leopard, often referred to as the 'Ghost of the Mountains'. My first encounter with this 'elusive' creature was through a high-definition wildlife documentary. \n\nI’m deeply 'fascinated' by its ability to thrive in such inhospitable, high-altitude environments. I’m particularly keen to learn more about its hunting patterns and how its 'camouflage' evolved to be so effective. Furthermore, I want to explore the ongoing 'conservation' efforts to save this 'endangered' apex predator from extinction. Its role in maintaining the 'biodiversity' of the mountain ecosystem is vital. Understanding the Snow Leopard is, for me, a way to appreciate the sheer resilience of life in the wild."
+            vocab: [
+                {w: "Elusive", m: "行踪诡秘的"}, {w: "Camouflage", m: "伪装"}, 
+                {w: "Apex predator", m: "顶级掠食者"}, {w: "Inhabitant", m: "栖息者"},
+                {w: "Endangered species", m: "濒危物种"}, {w: "Breathtaking", m: "惊人的"},
+                {w: "Stalk", m: "潜行追踪"}, {w: "Solitary", m: "独居的"},
+                {w: "Hostile environment", m: "恶劣环境"}, {w: "Conservation", m: "保护"},
+                {w: "Invisibility cloak", m: "隐身衣"}, {w: "Biodiversity", m: "生物多样性"},
+                {w: "Pique my curiosity", m: "勾起好奇心"}, {w: "In the wild", m: "在野外"},
+                {w: "Nature documentary", m: "自然纪录片"}, {w: "Master of disguise", m: "伪装大师"},
+                {w: "Stealthy", m: "鬼鬼祟祟的/静悄悄的"}, {w: "Majestic", m: "雄伟的"},
+                {w: "Vulnerable", m: "脆弱的"}, {w: "Poaching", m: "非法狩猎"}
+            ],
+            simple: "I want to talk about the Snow Leopard. I first saw it in a TV documentary when I was a kid. It looked so cool with its thick grey fur. \n\nI really want to know more about its camouflage. In the documentary, the camera was pointing at a pile of rocks, and for a long time, I thought there was nothing there. Then, suddenly, a rock started moving, and I realized it was a leopard! I was so shocked. I want to know how they can hide so perfectly. Also, because they are endangered, I want to learn how we can protect their homes in the mountains. They are very mysterious and I want to see how they survive in the cold snow without any help.",
+            advanced: "The animal that has always piqued my curiosity is the Snow Leopard, often dubbed the 'Ghost of the Mountains'. My fascination began a decade ago while watching a nature documentary. I remember staring at the screen, squinting my eyes to find the leopard on a rocky cliff. It was a 'now you see me, now you don't' moment—the animal was a master of disguise, blending perfectly into the grey stones. \n\nWhat I'm dying to understand is the physiological mechanism behind their camouflage. How does their fur pattern adapt so seamlessly to the hostile environment? Furthermore, I'm interested in their solitary lifestyle. Living as an apex predator in the silent, freezing Himalayas sounds both majestic and incredibly lonely. I want to delve into the conservation efforts as well. Knowing that such a stealthy and beautiful creature is vulnerable to climate change makes me want to advocate for their protection. They represent the mystery of nature that we have yet to fully decode."
         },
-        traditional: {
-            title: "Describe an interesting traditional story",
-            cue: "You should say: What the story is about; When/how you knew it; Who told you the story; And explain how you felt when you first heard it.",
+        info: {
+            title: "Describe a time when you needed to search for information",
+            cue: "You should say: What info you searched for; When you searched for it; Where you searched for it; And explain why you needed to search for it.",
             basics: {
-                "Story": "'The Legend of the White Snake' or 'Hou Yi Shooting the Suns'.",
-                "Theme": "Love, sacrifice, heroism, mythology.",
-                "Origin": "Chinese folklore."
+                "搜索背景": "A sudden blackout occurred during an online exam preparation.",
+                "搜索工具": "Smartphone, mobile data, AI-powered search engines.",
+                "当时心境": "Panicked, desperate, racing against the clock."
             },
-            vocab: ["Folklore", "Mythology", "Passed down through generations", "Supernatural", "Symbolic", "Moral of the story"],
-            simple: "I want to talk about the story of 'Hou Yi Shooting the Suns'. It is a very old Chinese traditional story. I first heard it from my grandmother when I was a little child. \n\nThe story is about a hero named Hou Yi. Long ago, there were ten suns in the sky, and it was too hot for people to live. Hou Yi used his bow and arrows to shoot down nine suns and save the Earth. When I first heard it, I felt very excited and amazed by his bravery. The story is 'symbolic' because it shows that humans can overcome great difficulties. It is a story that has been 'passed down through generations' in my family.",
-            advanced: "I’d like to share an 'interesting' traditional story from Chinese 'mythology' called 'The Legend of the White Snake'. I first became acquainted with this 'folklore' through a bedtime story told by my grandfather, and later I saw it performed in a traditional opera. \n\nThe narrative revolves around a 'supernatural' romance between a snake spirit and a mortal man. It’s a tale of love, sacrifice, and the struggle against prejudice. When I first heard it, I was deeply moved by the 'symbolic' nature of the characters. It’s a story that has been 'passed down through generations', reflecting profound cultural values. The 'moral of the story'—that true love knows no boundaries—is something that still resonates with me today. It’s a captivating piece of our cultural heritage."
+            vocab: [
+                {w: "Blackout", m: "停电"}, {w: "Race against the clock", m: "争分夺秒"}, 
+                {w: "Sift through", m: "筛查/搜寻"}, {w: "Vast amount of data", m: "海量数据"},
+                {w: "Fragmented information", m: "碎片化信息"}, {w: "At my fingertips", m: "在手边/近在咫尺"},
+                {w: "Urgency", m: "紧迫性"}, {w: "Panic-stricken", m: "惊慌失措的"},
+                {w: "Streamline", m: "简化/效率化"}, {w: "Search query", m: "搜索查询"},
+                {w: "Breakdown", m: "崩溃/故障"}, {w: "Reliability", m: "可靠性"},
+                {w: "Academic sources", m: "学术资源"}, {w: "Game-changer", m: "改变局面的事物"},
+                {w: "Saturate", m: "饱和/充斥"}, {w: "Filter out", m: "过滤"},
+                {w: "Technical glitch", m: "技术故障"}, {w: "Clarity", m: "清晰度"},
+                {w: "Enlightening", m: "启发性的"}, {w: "Frustrating", m: "令人沮丧的"}
+            ],
+            simple: "I remember a time last month when I had to search for information urgently. I was preparing for my final history exam at night, and suddenly, there was a power cut. My laptop died, and my room was pitch black. \n\nI was very worried because I hadn't finished my notes. I used my phone to search for the historical events on a website. Before the power cut, I was taking my time, but after that, I was racing against the clock because my phone battery was low. I had to find the most important points very quickly. It was very stressful but the information I found helped me pass the exam the next day. This taught me that having a smartphone with a good connection is a life-saver.",
+            advanced: "I’d like to recount a high-pressure situation last semester. It was the night before my final thesis submission when a sudden blackout plunged my apartment into darkness. My router went dead, and I was panic-stricken because I needed to verify some last-minute statistics. \n\nWith only 15% battery left on my smartphone, I had to sift through a vast amount of fragmented information on the web. I switched from traditional search engines to an AI assistant to streamline the process. The contrast between my calm, organized research earlier that day and this desperate race against the clock was intense. I was frantically typing queries, hoping for clarity amidst the technical glitch. This experience was quite enlightening; it made me realize how much we depend on the reliability of our infrastructure, and how AI can be a total game-changer when you need filtered, accurate data under extreme urgency."
         }
+        // ... 其他话题在此扩展，保持相同结构
     };
 
-    function switchTopic(topicId) {
-        const topic = topics[topicId];
+    function loadTopic(id) {
+        const topic = topics[id] || topics['friend'];
         const app = document.getElementById('app');
         
-        // 更新导航状态
-        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        event.target.classList.add('active');
+        // 更新导航
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const activeNav = Array.from(document.querySelectorAll('.nav-item')).find(el => el.innerText.includes(id) || el.onclick.toString().includes(id));
+        if(activeNav) activeNav.classList.add('active');
 
-        // 生成内容
         let basicsHtml = '';
-        for (let key in topic.basics) {
-            basicsHtml += `<li><strong>${key}:</strong> ${topic.basics[key]}</li>`;
+        for (let k in topic.basics) {
+            basicsHtml += `<li><strong>${k}:</strong> ${topic.basics[k]}</li>`;
         }
 
         let vocabHtml = '';
         topic.vocab.forEach(v => {
-            vocabHtml += `<li class="vocab-tag">${v}</li>`;
+            vocabHtml += `<div class="vocab-item"><span class="vocab-word">${v.w}</span> ${v.m}</div>`;
         });
 
         app.innerHTML = `
-            <div class="topic-header">
-                <h1>${topic.title}</h1>
+            <div class="section-header">
+                <h1 style="font-size:2.2rem; color:var(--bg-dark)">${topic.title}</h1>
             </div>
 
-            <div class="cue-card">
-                <strong>Target Cues:</strong><br>
-                ${topic.cue}
+            <div class="cue-box">
+                <p style="margin:0; color:#b45309; font-weight:bold">题目要求 (Cues):</p>
+                <p style="margin:10px 0 0 0; font-style:italic">${topic.cue}</p>
             </div>
 
-            <div class="section-grid">
-                <div class="info-card">
-                    <h3>🔍 Basics & Key Features</h3>
-                    <ul style="padding-left:20px; color:var(--text-muted); line-height:2">
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>🔍 基础信息描述 (Basics)</h3>
+                    <div class="instruction-tag">用于回答题目第一、二部分，建立画面感</div>
+                    <ul style="padding-left:20px; line-height:2">
                         ${basicsHtml}
                     </ul>
                 </div>
-                <div class="info-card">
-                    <h3>📚 Vocabulary Bank</h3>
-                    <ul class="vocab-list">
+                <div class="card">
+                    <h3>📚 核心词汇库 (20+)</h3>
+                    <div class="instruction-tag">尝试在回答中至少使用 5-8 个词汇</div>
+                    <div class="vocab-grid">
                         ${vocabHtml}
-                    </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="script-container">
-                <div class="script-box simple">
-                    <span class="badge b-simple">Band 5.5 - 6.0 (Simple & Clear)</span>
-                    <div class="script-content">${topic.simple}</div>
+                <div class="script-box simple-version">
+                    <span class="badge b-simple">基础篇 (Band 5.5-6.0)</span>
+                    <div class="instruction-tag">侧重：清晰逻辑、简单对比</div>
+                    <div class="script-content">${topic.simple.replace(/\n/g, '<br>')}</div>
                 </div>
-                <div class="script-box advanced">
-                    <span class="badge b-advanced">Band 6.5 - 7.5 (Advanced & Fluent)</span>
-                    <div class="script-content">${topic.advanced}</div>
+                <div class="script-box adv-version">
+                    <span class="badge b-adv">进阶篇 (Band 6.5-7.5)</span>
+                    <div class="instruction-tag">侧重：感官细节、侧写手法、地道搭配</div>
+                    <div class="script-content">${topic.advanced.replace(/\n/g, '<br>')}</div>
                 </div>
             </div>
         `;
@@ -396,42 +281,42 @@
     let isRunning = false;
 
     function toggleTimer() {
-        const btn = document.querySelector('.t-start');
         if (isRunning) {
             clearInterval(timer);
-            btn.innerText = "Resume";
+            document.querySelector('.t-start').innerText = '继续';
         } else {
-            timer = setInterval(updateTimer, 1000);
-            btn.innerText = "Pause";
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("时间到！请停止回答。");
+                    resetTimer();
+                    return;
+                }
+                timeLeft--;
+                updateTimerDisplay();
+            }, 1000);
+            document.querySelector('.t-start').innerText = '暂停';
         }
         isRunning = !isRunning;
-    }
-
-    function updateTimer() {
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            alert("Time's up! Great job.");
-            resetTimer();
-            return;
-        }
-        timeLeft--;
-        const mins = Math.floor(timeLeft / 60);
-        const secs = timeLeft % 60;
-        document.getElementById('timer-display').innerText = 
-            `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     }
 
     function resetTimer() {
         clearInterval(timer);
         timeLeft = 120;
         isRunning = false;
-        document.getElementById('timer-display').innerText = "02:00";
-        document.querySelector('.t-start').innerText = "Start / Pause";
+        updateTimerDisplay();
+        document.querySelector('.t-start').innerText = '开始 / 暂停';
     }
 
-    // 初始加载
-    window.onload = () => switchTopic('friend');
-</script>
+    function updateTimerDisplay() {
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        document.getElementById('timer-display').innerText = 
+            `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
 
+    // 初始化
+    window.onload = () => loadTopic('friend');
+</script>
 </body>
 </html>
