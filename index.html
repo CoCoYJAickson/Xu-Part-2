@@ -3,372 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>雅思口语 Part 2 智库</title>
+    <title>IELTS Speaking Part 2 - 智学练习室</title>
     <style>
         :root {
-            --primary-color: #5d9cec;
-            --secondary-color: #4a8ad8;
-            --bg-color: #f4f7f9;
-            --card-bg: #ffffff;
-            --text-main: #2c3e50;
-            --text-sub: #555;
-            --accent-yellow: #fff9e6;
-            --border-yellow: #ffc107;
+            --primary: #6366f1;
+            --primary-light: #e0e7ff;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --card: rgba(255, 255, 255, 0.9);
         }
 
         body {
-            font-family: -apple-system, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
             margin: 0;
-            padding: 10px;
-            scroll-behavior: smooth;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 顶部装饰条 */
+        .top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 20px auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 20px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 40px 0;
         }
 
         h1 {
-            font-size: 2.2em;
-            color: var(--primary-color);
+            font-size: 2.5rem;
             margin-bottom: 10px;
+            background: linear-gradient(90deg, #4338ca, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .intro {
-            background-color: #eef5ff;
-            border-left: 5px solid var(--primary-color);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        /* 导航与功能按钮 */
-        .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 20px 0;
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-        }
-
-        .nav-buttons a, .random-btn {
-            text-decoration: none;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            font-size: 14px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: none;
-            cursor: pointer;
-        }
-
-        .random-btn { background-color: #67c23a; }
-        .nav-buttons a:hover, .random-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            background-color: var(--secondary-color);
-        }
-
-        /* 话题板块 */
-        .topic-section {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-        }
-
-        h2 { border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 25px; }
-
-        /* 选项卡样式 */
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        .tab {
-            padding: 10px 18px;
-            cursor: pointer;
-            border-radius: 8px 8px 0 0;
-            white-space: nowrap;
-            transition: 0.3s;
-            background: #f0f0f0;
-        }
-
-        .tab.active {
-            background: var(--primary-color);
-            color: white;
-            font-weight: bold;
-        }
-
-        .tab-content { display: none; animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .cue-card {
-            background-color: #f8f9fa;
-            border: 1px dashed var(--primary-color);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-
-        /* 词汇库 */
-        .vocabulary-bank ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .vocabulary-bank li {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        .vocabulary-bank li:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* 思路引导 */
-        .thinking-guide {
-            background-color: var(--accent-yellow);
-            border-left: 5px solid var(--border-yellow);
-            padding: 15px 20px;
-            border-radius: 8px;
-        }
-
-        .thinking-guide li { margin-bottom: 15px; }
-        .thinking-guide span {
-            display: block;
-            margin-top: 8px;
-            color: #666;
-            font-style: italic;
-            border-left: 2px solid #ccc;
-            padding-left: 10px;
-        }
-
-        /* 回到顶部 */
-        #backToTop {
+        /* 计时器悬浮组件 */
+        .timer-box {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
             z-index: 1000;
+            text-align: center;
         }
 
+        #timer-display { font-size: 24px; font-weight: bold; color: var(--primary); display: block; }
+        .timer-btn { 
+            background: var(--primary); color: white; border: none; padding: 5px 10px; 
+            border-radius: 5px; cursor: pointer; font-size: 12px; margin-top: 5px;
+        }
+
+        /* 导航 */
+        .nav-wrapper {
+            position: sticky;
+            top: 20px;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            z-index: 99;
+            margin-bottom: 40px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            padding: 8px 18px;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover { background: var(--primary-light); color: var(--primary); }
+
+        /* 卡片设计 */
+        .section-card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border: 1px solid white;
+        }
+
+        h2 { font-size: 1.8rem; border-left: 6px solid var(--primary); padding-left: 15px; margin-bottom: 30px; }
+
+        /* Tab 切换 */
+        .tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 25px; padding-bottom: 8px; }
+        .tab {
+            padding: 10px 20px; background: #f1f5f9; border-radius: 12px;
+            cursor: pointer; white-space: nowrap; transition: 0.3s; color: var(--text-light);
+        }
+        .tab.active { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(99,102,241,0.3); }
+
+        .tab-content { display: none; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 内容元素 */
+        .cue-box { background: #f8fafc; padding: 20px; border-radius: 15px; border-left: 4px solid var(--secondary); margin-bottom: 25px; }
+        
+        .vocab-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+        .vocab-item { 
+            background: white; border: 1px solid #e2e8f0; padding: 5px 12px; 
+            border-radius: 8px; font-size: 14px; color: var(--text-dark);
+            transition: 0.3s;
+        }
+        .vocab-item:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+        .guide-box { background: #fffbeb; border-radius: 15px; padding: 25px; margin-top: 25px; }
+        .guide-item { margin-bottom: 20px; }
+        .guide-title { font-weight: bold; color: #b45309; display: block; margin-bottom: 5px; }
+        .guide-example { color: #4b5563; font-style: italic; font-size: 0.95rem; }
+
         @media (max-width: 600px) {
-            .container { padding: 15px; }
-            .nav-buttons a { font-size: 12px; padding: 8px 15px; }
+            h1 { font-size: 1.8rem; }
+            .section-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="backToTop" onclick="window.scrollTo(0,0)">↑</div>
+    <div class="top-bar"></div>
+
+    <div class="timer-box">
+        <span id="timer-display">02:00</span>
+        <button class="timer-btn" onclick="toggleTimer()">开始倒计时</button>
+        <button class="timer-btn" style="background:#64748b" onclick="resetTimer()">重置</button>
+    </div>
 
     <div class="container">
         <header>
-            <h1>雅思口语 Part 2 练习工具</h1>
-            <button class="random-btn" onclick="getRandomTopic()">🎲 随机挑战一个话题</button>
+            <h1>IELTS Speaking Prep</h1>
+            <p style="color:var(--text-light)">全话题库 · 包含词汇积累与逻辑思路引导</p>
         </header>
 
-        <div class="intro">
-            <p><strong>💡 练习指南：</strong> 每天选择2-3个话题，先看词汇，再对照思路引导进行2分钟不间断录音。重复3次，直到流利顺滑。</p>
-        </div>
+        <nav class="nav-wrapper">
+            <a href="#event" class="nav-link">事件</a>
+            <a href="#people" class="nav-link">人物</a>
+            <a href="#place" class="nav-link">地点</a>
+            <a href="#media" class="nav-link">媒体/物品</a>
+            <a href="#activity" class="nav-link">活动/自然</a>
+        </nav>
 
-        <div class="nav-buttons">
-            <a href="#event">事件</a>
-            <a href="#people">人物</a>
-            <a href="#place">地点</a>
-            <a href="#media">媒体/物品</a>
-            <a href="#activity">活动</a>
-            <a href="#nature">自然</a>
-        </div>
+        <section id="event" class="section-card">
+            <h2>事件 (Event)</h2>
+            <div class="tabs">
+                <div class="tab" onclick="openTab(event, 'GameChallenge')">游戏挑战 (从零开始)</div>
+                <div class="tab" onclick="openTab(event, 'BusyTime')">忙碌的时刻</div>
+            </div>
 
-        <div id="people" class="topic-section">
-            <h2>主题：人物 (People)</h2>
-            <div class="tab-container">
+            <div id="GameChallenge" class="tab-content">
+                <div class="cue-box"><strong>Describe a difficult challenge you met.</strong></div>
+                <h4>词汇储备</h4>
+                <ul class="vocab-list">
+                    <li class="vocab-item">from scratch</li><li class="vocab-item">Unity engine</li><li class="vocab-item">steep learning curve</li>
+                    <li class="vocab-item">debugging</li><li class="vocab-item">countless hours</li><li class="vocab-item">persevered</li><li class="vocab-item">sense of pride</li>
+                </ul>
+                <div class="guide-box">
+                    <div class="guide-item"><span class="guide-title">1. 开头：点明挑战</span><span class="guide-example">"I'd like to talk about a recent challenge I faced, which was creating a 2D game from scratch for my graduation application."</span></div>
+                    <div class="guide-item"><span class="guide-title">2. 过程：你如何应对？</span><span class="guide-example">"I had to learn everything, from coding to art design. There were times I got stuck on a bug and felt like giving up, but I persevered by watching tutorials."</span></div>
+                </div>
+            </div>
+
+            <div id="BusyTime" class="tab-content">
+                <div class="cue-box"><strong>Describe a time when you were very busy.</strong></div>
+                <h4>词汇储备</h4>
+                <ul class="vocab-list">
+                    <li class="vocab-item">hectic schedule</li><li class="vocab-item">swamped with work</li><li class="vocab-item">tight deadline</li>
+                    <li class="vocab-item">prioritize tasks</li><li class="vocab-item">drained</li><li class="vocab-item">sense of achievement</li>
+                </ul>
+                <div class="guide-box">
+                    <div class="guide-item"><span class="guide-title">思路引导</span><span class="guide-example">谈论期末周或大项目截止前。描述你是如何制作时间表 (Schedule) 并一件件完成任务的，最后感到一种巨大的解脱 (relief)。</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="people" class="section-card">
+            <h2>人物 (People)</h2>
+            <div class="tabs">
                 <div class="tab" onclick="openTab(event, 'FriendJerry')">朋友Jerry</div>
-                <div class="tab" onclick="openTab(event, 'Grandfather')">长辈 (爷爷)</div>
-                <div class="tab" onclick="openTab(event, 'JiaLing')">演员 (贾玲)</div>
+                <div class="tab" onclick="openTab(event, 'Grandfather')">长辈(爷爷)</div>
+                <div class="tab" onclick="openTab(event, 'JiaLing')">贾玲</div>
                 <div class="tab" onclick="openTab(event, 'Sportsperson')">运动员 (新)</div>
             </div>
 
-            <div id="Sportsperson" class="tab-content">
-                <div class="cue-card"><p><strong>Describe a sportsperson you admire.</strong></p></div>
-                <h4>词汇库 (运动员)</h4>
-                <div class="vocabulary-bank">
-                    <ul><li>top-tier athlete</li><li>physical peak</li><li>sheer determination</li><li>mental toughness</li><li>unrivaled talent</li><li>role model</li><li>break world records</li><li>overcome injuries</li><li>humble</li><li>perseverance</li><li>Olympic medalist</li><li>indomitable spirit</li><li>dedication</li><li>strict training regime</li><li>inspirational</li></ul>
-                </div>
-                <h4>回答思路引导</h4>
-                <div class="thinking-guide">
-                    <ol>
-                        <li><strong>介绍：</strong><span>"I'd like to talk about Zheng Qinwen, a rising star in the tennis world who has become a national hero recently."</span></li>
-                        <li><strong>成名原因：</strong><span>"She gained massive popularity after winning the gold medal at the Paris Olympics. It was a historic moment for Chinese tennis."</span></li>
-                        <li><strong>为什么欣赏：</strong><span>"What I admire most is her mental toughness. Even when she's facing a disadvantage, she never loses her cool. Her 'never-give-up' attitude is truly contagious."</span></li>
-                        <li><strong>总结：</strong><span>"She is more than just a talented athlete; she is a symbol of hard work and perseverance for the younger generation."</span></li>
-                    </ol>
-                </div>
-            </div>
+            <div id="FriendJerry" class="tab-content">
+                <div class="cue-box"><strong>Describe a close friend.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">muscular</li><li class="vocab-item">introverted</li><li class="vocab-item">reliable</li><li class="vocab-item">count on</li><li class="vocab-item">humorous</li>
+                </ul>
+                <div class="guide-box">讲述沙漠徒步中他分享水分给你的故事，证明 A friend in need is a friend indeed.</div>
             </div>
 
-        <div id="place" class="topic-section">
-            <h2>主题：地点 (Place)</h2>
-            <div class="tab-container">
+            <div id="Grandfather" class="tab-content">
+                <div class="cue-box"><strong>Describe a respected old person.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">meticulous</li><li class="vocab-item">dedicated</li><li class="vocab-item">perseverance</li><li class="vocab-item">life lessons</li>
+                </ul>
+                <div class="guide-box">描述爷爷作为钢琴家对音乐的严谨态度，这种态度如何潜移默化影响了你现在的学习态度。</div>
+            </div>
+
+            <div id="JiaLing" class="tab-content">
+                <div class="cue-box"><strong>Describe an actress you admire.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">down-to-earth</li><li class="vocab-item">resilient</li><li class="vocab-item">transformation</li><li class="vocab-item">inspirational</li>
+                </ul>
+                <div class="guide-box">谈论《热辣滚烫》中的转变，不仅是外貌，更是那种强大的精神力量 (Inner strength)。</div>
+            </div>
+
+            <div id="Sportsperson" class="tab-content">
+                <div class="cue-box"><strong>Describe a sportsperson you admire.</strong></div>
+                <h4>词汇储备</h4>
+                <ul class="vocab-list">
+                    <li class="vocab-item">top-tier athlete</li><li class="vocab-item">mental toughness</li><li class="vocab-item">indomitable spirit</li><li class="vocab-item">break records</li><li class="vocab-item">Olympics</li>
+                </ul>
+                <div class="guide-box">
+                    <div class="guide-item"><span class="guide-title">思路引导</span><span class="guide-example">描述郑钦文(Zheng Qinwen)。描述她在奥运会中的顽强表现，即使在不利的情况下也能保持冷静 (keep her cool)。</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="place" class="section-card">
+            <h2>地点 (Place)</h2>
+            <div class="tabs">
                 <div class="tab" onclick="openTab(event, 'Yellowstone')">黄石公园</div>
                 <div class="tab" onclick="openTab(event, 'Zhujiajiao')">朱家角</div>
-                <div class="tab" onclick="openTab(event, 'InterestingBuilding')">有趣建筑 (新)</div>
+                <div class="tab" onclick="openTab(event, 'Building')">有趣建筑 (新)</div>
             </div>
 
-            <div id="InterestingBuilding" class="tab-content">
-                <div class="cue-card"><p><strong>Describe an interesting building you know.</strong></p></div>
-                <h4>词汇库 (有趣建筑：上海中心)</h4>
-                <div class="vocabulary-bank">
-                    <ul><li>architectural marvel</li><li>skyscraper</li><li>futuristic design</li><li>spiral shape</li><li>breathtaking views</li><li>landmark</li><li>sustainable</li><li>glass facade</li><li>state-of-the-art</li><li>urban landscape</li><li>skyline</li><li>observation deck</li><li>iconic structure</li></ul>
-                </div>
-                <h4>回答思路引导</h4>
-                <div class="thinking-guide">
-                    <ol>
-                        <li><strong>地点与名称：</strong><span>"I want to describe the Shanghai Tower, which is currently the tallest building in China and a true architectural marvel."</span></li>
-                        <li><strong>外观特征：</strong><span>"It has a unique spiral shape that looks like a dragon twisting up towards the sky. The glass facade makes it look very futuristic, especially at night when it's all lit up."</span></li>
-                        <li><strong>内部/功能：</strong><span>"Inside, it's like a vertical city with offices, hotels, and a famous observation deck. Taking the high-speed elevator to the top is an experience in itself."</span></li>
-                        <li><strong>为什么觉得有趣：</strong><span>"I find it interesting not just because of its height, but because of its green design. It uses wind turbines and rainwater harvesting, showing how modern cities can be sustainable."</span></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div id="activity" class="topic-section">
-            <h2>主题：活动 (Activity)</h2>
-            <div class="tab-container">
-                <div class="tab" onclick="openTab(event, 'CookingHobby')">烹饪爱好</div>
-                <div class="tab" onclick="openTab(event, 'ExcitingActivity')">刺激活动 (新)</div>
+            <div id="Yellowstone" class="tab-content">
+                <div class="cue-box"><strong>Describe a beautiful place to visit.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">pristine nature</li><li class="vocab-item">geothermal</li><li class="vocab-item">awe-inspiring</li><li class="vocab-item">majestic</li>
+                </ul>
+                <div class="guide-box">描述那种“不属于地球”的景观感 (out of this world)，以及对大自然原始力量的敬畏。</div>
             </div>
 
-            <div id="ExcitingActivity" class="tab-content">
-                <div class="cue-card"><p><strong>Describe an exciting activity that you experienced.</strong></p></div>
-                <h4>词汇库 (刺激活动：过山车/跳伞)</h4>
-                <div class="vocabulary-bank">
-                    <ul><li>adrenaline rush</li><li>thrilling</li><li>heart-pounding</li><li>once-in-a-lifetime</li><li>overcome fear</li><li>scary but exciting</li><li>breathtaking</li><li>screamed my head off</li><li>unforgettable memory</li><li>step out of comfort zone</li><li>sheer excitement</li><li>butterflies in my stomach</li></ul>
-                </div>
-                <h4>回答思路引导</h4>
-                <div class="thinking-guide">
-                    <ol>
-                        <li><strong>是什么活动：</strong><span>"I'd like to talk about the first time I went skydiving during my summer vacation last year. It was the most exciting thing I've ever done."</span></li>
-                        <li><strong>过程细节：</strong><span>"The moment the plane door opened, I felt a massive rush of adrenaline. Free-falling through the air at high speed was both terrifying and incredibly liberating."</span></li>
-                        <li><strong>感受：</strong><span>"I was screaming my head off at first, but once the parachute opened, the view was absolutely breathtaking. I felt like a bird gliding over the landscape."</span></li>
-                        <li><strong>意义：</strong><span>"That experience taught me the importance of stepping out of my comfort zone. Now, whenever I face a challenge, I remember that feeling of overcoming my fear."</span></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div id="nature" class="topic-section">
-            <h2>主题：自然 (Nature)</h2>
-            <div class="tab-container">
-                <div class="tab" onclick="openTab(event, 'WildAnimals')">野生动物 (新)</div>
+            <div id="Zhujiajiao" class="tab-content">
+                <div class="cue-box"><strong>Describe a historical water town.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">Venice of Shanghai</li><li class="vocab-item">tranquil</li><li class="vocab-item">nostalgic</li><li class="vocab-item">stone bridges</li>
+                </ul>
+                <div class="guide-box">强调一种“逃离都市喧嚣” (escape from the hustle and bustle) 的感觉。</div>
             </div>
 
-            <div id="WildAnimals" class="tab-content">
-                <div class="cue-card"><p><strong>Describe a wild animal you are interested in.</strong></p></div>
-                <h4>词汇库 (野生动物：大熊猫/雪豹)</h4>
-                <div class="vocabulary-bank">
-                    <ul><li>endangered species</li><li>natural habitat</li><li>biodiversity</li><li>conservation</li><li>unique markings</li><li>elusive</li><li>wildlife protection</li><li>eco-system</li><li>magnificent</li><li>predator</li><li>symbol of peace</li><li>vulnerable</li></ul>
-                </div>
-                <h4>回答思路引导</h4>
-                <div class="thinking-guide">
-                    <ol>
-                        <li><strong>介绍：</strong><span>"I've always been fascinated by the Snow Leopard, which is often called the 'Ghost of the Mountains' because it's so elusive."</span></li>
-                        <li><strong>外貌与习性：</strong><span>"They have thick, smoky-grey fur with beautiful black spots, which helps them blend perfectly into the rocky mountains. They are incredible jumpers and very solitary animals."</span></li>
-                        <li><strong>为什么感兴趣：</strong><span>"I find them interesting because of their mysterious nature and their ability to survive in such harsh, freezing environments."</span></li>
-                        <li><strong>现状与呼吁：</strong><span>"Unfortunately, they are an endangered species. I believe we need to do more for wildlife conservation to protect their natural habitats from being destroyed."</span></li>
-                    </ol>
+            <div id="Building" class="tab-content">
+                <div class="cue-box"><strong>Describe an interesting building.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">architectural marvel</li><li class="vocab-item">futuristic</li><li class="vocab-item">iconic landmark</li><li class="vocab-item">sustainable</li>
+                </ul>
+                <div class="guide-box">描述上海中心(Shanghai Tower)的螺旋形状，以及它的环保设计理念 (Eco-friendly concepts)。</div>
+            </div>
+        </section>
+
+        <section id="media" class="section-card">
+            <h2>媒体与物品 (Media & Objects)</h2>
+            <div class="tabs">
+                <div class="tab" onclick="openTab(event, 'Song')">歌曲(毛不易)</div>
+                <div class="tab" onclick="openTab(event, 'Movie')">电影(哈利波特)</div>
+                <div class="tab" onclick="openTab(event, 'Book')">书/故事(绿皮书)</div>
+                <div class="tab" onclick="openTab(event, 'Tech')">科技(AI)</div>
+            </div>
+
+            <div id="Song" class="tab-content">
+                <div class="cue-box"><strong>Describe a song with special meaning.</strong></div>
+                <ul class="vocab-list"><li class="vocab-item">folk song</li><li class="vocab-item">relatable</li><li class="vocab-item">daydreaming</li></ul>
+                <div class="guide-box">《如果有一天我变得很有钱》。谈论歌词背后的平凡心，以及什么是真正的幸福。</div>
+            </div>
+
+            <div id="Movie" class="tab-content">
+                <div class="cue-box"><strong>Describe your favorite movie.</strong></div>
+                <ul class="vocab-list"><li class="vocab-item">fantasy</li><li class="vocab-item">coming-of-age</li><li class="vocab-item">good vs evil</li></ul>
+                <div class="guide-box">哈利波特。关于友谊、勇气以及童年回忆。</div>
+            </div>
+
+            <div id="Book" class="tab-content">
+                <div class="cue-box"><strong>Describe an interesting story.</strong></div>
+                <ul class="vocab-list"><li class="vocab-item">racial segregation</li><li class="vocab-item">road movie</li><li class="vocab-item">heartwarming</li></ul>
+                <div class="guide-box">《绿皮书》。谈论两种完全不同的人如何通过旅途消除偏见 (break down prejudices)。</div>
+            </div>
+
+            <div id="Tech" class="tab-content">
+                <div class="cue-box"><strong>Describe useful technology.</strong></div>
+                <ul class="vocab-list"><li class="vocab-item">artificial intelligence</li><li class="vocab-item">game-changer</li><li class="vocab-item">efficient</li></ul>
+                <div class="guide-box">描述 AI 像一个 24/7 的个人助理，如何提高你的学习效率。</div>
+            </div>
+        </section>
+
+        <section id="activity" class="section-card">
+            <h2>活动与自然 (Activity & Nature)</h2>
+            <div class="tabs">
+                <div class="tab" onclick="openTab(event, 'Cooking')">爱好(烹饪)</div>
+                <div class="tab" onclick="openTab(event, 'Exciting')">刺激活动 (新)</div>
+                <div class="tab" onclick="openTab(event, 'WildLife')">野生动物 (新)</div>
+            </div>
+
+            <div id="Cooking" class="tab-content">
+                <div class="cue-box"><strong>Describe a hobby you enjoy.</strong></div>
+                <ul class="vocab-list"><li class="vocab-item">therapeutic</li><li class="vocab-item">unwind</li><li class="vocab-item">creative</li></ul>
+                <div class="guide-box">描述周末做意面的过程，以及把美食分享给家人的成就感。</div>
+            </div>
+
+            <div id="Exciting" class="tab-content">
+                <div class="cue-box"><strong>Describe an exciting activity.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">adrenaline rush</li><li class="vocab-item">heart-pounding</li><li class="vocab-item">comfort zone</li><li class="vocab-item">breathtaking</li>
+                </ul>
+                <div class="guide-box">
+                    <div class="guide-item"><span class="guide-title">思路引导</span><span class="guide-example">谈论第一次跳伞或玩大型过山车。描述从恐惧 (terrified) 到释放 (liberating) 的心路历程。</span></div>
                 </div>
             </div>
-        </div>
 
-        </div>
+            <div id="WildLife" class="tab-content">
+                <div class="cue-box"><strong>Describe a wild animal.</strong></div>
+                <ul class="vocab-list">
+                    <li class="vocab-item">endangered species</li><li class="vocab-item">elusive</li><li class="vocab-item">habitat</li><li class="vocab-item">conservation</li>
+                </ul>
+                <div class="guide-box">
+                    <div class="guide-item"><span class="guide-title">思路引导</span><span class="guide-example">描述雪豹(Snow Leopard)。谈论它们在雪地里的保护色，以及我们需要保护野生动物栖息地的紧迫性。</span></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <script>
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            let parentContainer = evt.currentTarget.closest('.topic-section');
-            tabcontent = parentContainer.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = parentContainer.getElementsByClassName("tab");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            let parent = evt.currentTarget.closest('.section-card');
+            let content = parent.querySelectorAll('.tab-content');
+            content.forEach(c => c.style.display = 'none');
+            
+            let tabs = parent.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabName).style.display = 'block';
+            evt.currentTarget.classList.add('active');
         }
 
-        function initializeTabs() {
-            const tabContainers = document.querySelectorAll('.tab-container');
-            tabContainers.forEach(container => {
-                const firstTab = container.querySelector('.tab');
-                if (firstTab) firstTab.click();
-            });
-        }
+        // 计时器逻辑
+        let timer;
+        let timeLeft = 120;
+        let isRunning = false;
 
-        // 随机跳转话题
-        function getRandomTopic() {
-            const tabs = document.querySelectorAll('.tab');
-            const randomIdx = Math.floor(Math.random() * tabs.length);
-            tabs[randomIdx].click();
-            tabs[randomIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // 显示/隐藏回到顶部按钮
-        window.onscroll = function() {
-            const btn = document.getElementById("backToTop");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btn.style.display = "flex";
+        function toggleTimer() {
+            const btn = document.querySelector('.timer-btn');
+            if (isRunning) {
+                clearInterval(timer);
+                btn.innerText = '继续练习';
             } else {
-                btn.style.display = "none";
+                timer = setInterval(updateTimer, 1000);
+                btn.innerText = '暂停练习';
             }
-        };
+            isRunning = !isRunning;
+        }
 
-        document.addEventListener('DOMContentLoaded', initializeTabs);
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert("时间到！");
+                resetTimer();
+                return;
+            }
+            timeLeft--;
+            let mins = Math.floor(timeLeft / 60);
+            let secs = timeLeft % 60;
+            document.getElementById('timer-display').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 120;
+            isRunning = false;
+            document.getElementById('timer-display').innerText = '02:00';
+            document.querySelector('.timer-btn').innerText = '开始倒计时';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.section-card').forEach(s => {
+                s.querySelector('.tab').click();
+            });
+        });
     </script>
-
 </body>
 </html>
