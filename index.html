@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>雅思口语 Pro - 深度逻辑练习室</title>
+    <title>雅思口语 Pro - 满分逻辑深度版</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4338ca;
-            --secondary: #0ea5e9;
-            --accent: #f59e0b;
-            --bg-dark: #0f172a;
-            --card-bg: #ffffff;
+            --primary: #6366f1; /* 经典靛紫 */
+            --primary-dark: #4338ca;
+            --secondary: #a855f7; /* 高级亮紫 */
+            --bg-sidebar: #1e1b4b; /* 深紫蓝 */
+            --bg-main: #f8fafc;
             --text-main: #1e293b;
-            --text-muted: #64748b;
+            --accent: #f59e0b;
         }
 
         body {
             font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            background: #f1f5f9;
+            background: var(--bg-main);
             color: var(--text-main);
             margin: 0;
             display: flex;
@@ -26,70 +26,79 @@
 
         /* 侧边导航栏 */
         .sidebar {
-            width: 280px;
+            width: 300px;
             height: 100vh;
-            background: var(--bg-dark);
+            background: var(--bg-sidebar);
             color: white;
             position: fixed;
             overflow-y: auto;
             z-index: 100;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
         }
 
-        .sidebar-header { padding: 30px 20px; border-bottom: 1px solid #334155; }
-        .sidebar-header h2 { margin: 0; font-size: 1.5rem; color: var(--secondary); }
+        .sidebar-header { padding: 40px 25px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-header h2 { margin: 0; font-size: 1.6rem; background: linear-gradient(to right, #a855f7, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
 
-        .nav-group { padding: 20px 0; }
-        .nav-label { padding: 0 20px 10px; font-size: 12px; color: #94a3b8; font-weight: bold; letter-spacing: 1px; }
+        .nav-group { padding: 25px 0; }
+        .nav-label { padding: 0 25px 12px; font-size: 12px; color: #94a3b8; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
         .nav-item {
-            padding: 12px 25px; cursor: pointer; font-size: 14px; transition: 0.3s;
-            display: block; color: #cbd5e1; text-decoration: none; border-left: 4px solid transparent;
+            padding: 14px 30px; cursor: pointer; font-size: 14px; transition: all 0.3s;
+            display: block; color: #cbd5e1; text-decoration: none; border-left: 5px solid transparent;
         }
-        .nav-item:hover { background: #1e293b; color: white; }
-        .nav-item.active { background: #334155; color: white; border-left-color: var(--accent); }
+        .nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .nav-item.active { background: rgba(99, 102, 241, 0.2); color: white; border-left-color: var(--secondary); font-weight: 600; }
 
-        /* 主区域 */
-        .main-content { margin-left: 280px; padding: 40px; width: calc(100% - 280px); }
+        /* 主内容区 */
+        .main-content { margin-left: 300px; padding: 50px; width: calc(100% - 300px); max-width: 1200px; }
 
-        /* 计时器悬浮 */
+        /* 计时器 */
         .timer-box {
             position: fixed; top: 30px; right: 40px; background: white;
-            padding: 20px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center; z-index: 1000; border: 1px solid #e2e8f0;
+            padding: 25px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            text-align: center; z-index: 1000; border: 1px solid rgba(99, 102, 241, 0.1);
         }
-        #timer-display { font-size: 48px; font-weight: 800; color: var(--primary); font-family: 'Courier New', monospace; }
-        .t-btn { margin-top: 10px; padding: 10px 20px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; }
+        #timer-display { font-size: 52px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; letter-spacing: -2px; }
+        .timer-ctrl { display: flex; gap: 10px; margin-top: 15px; }
+        .t-btn { flex: 1; padding: 12px; border: none; border-radius: 12px; cursor: pointer; font-weight: 800; transition: 0.2s; font-size: 14px; }
         .t-start { background: var(--primary); color: white; }
-        .t-reset { background: #f1f5f9; color: var(--text-muted); margin-left: 5px; }
+        .t-start:hover { background: var(--primary-dark); }
+        .t-reset { background: #f1f5f9; color: var(--text-main); }
 
-        /* 内容卡片 */
-        .section-header { margin-bottom: 30px; }
-        .cue-box { background: #fffbeb; border: 2px dashed #f59e0b; padding: 25px; border-radius: 15px; margin-bottom: 30px; }
-        
+        /* 卡片设计 */
+        .section-header { margin-bottom: 40px; }
+        .cue-box { background: #faf5ff; border: 2px solid #e9d5ff; padding: 30px; border-radius: 20px; margin-bottom: 40px; position: relative; overflow: hidden; }
+        .cue-box::before { content: "TOPIC CARD"; position: absolute; top: -10px; right: -10px; font-size: 40px; font-weight: 900; color: #f3e8ff; z-index: 0; opacity: 0.5; }
+        .cue-text { position: relative; z-index: 1; margin: 0; font-size: 16px; line-height: 1.6; color: #6b21a8; }
+
         .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .card { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        h3 { margin-top: 0; color: var(--primary); border-left: 5px solid var(--secondary); padding-left: 15px; margin-bottom: 20px; }
+        .card { background: white; padding: 35px; border-radius: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; }
+        h3 { margin: 0 0 20px 0; font-size: 18px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
+        h3::before { content: ""; width: 8px; height: 24px; background: var(--secondary); border-radius: 4px; display: inline-block; }
 
         .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .vocab-item { font-size: 13px; line-height: 1.4; padding: 8px; background: #f8fafc; border-radius: 8px; border: 1px solid #edf2f7; }
-        .vocab-word { font-weight: bold; color: var(--primary); display: block; }
+        .vocab-item { font-size: 13px; padding: 10px; background: #fdfbff; border-radius: 10px; border: 1px solid #f3e8ff; transition: 0.2s; }
+        .vocab-item:hover { border-color: var(--secondary); background: white; }
+        .vocab-word { font-weight: 700; color: var(--primary); display: block; margin-bottom: 2px; }
 
-        .script-container { display: flex; flex-direction: column; gap: 30px; }
-        .script-box { padding: 35px; border-radius: 24px; line-height: 1.8; position: relative; }
-        .badge { position: absolute; top: -15px; left: 30px; padding: 6px 15px; border-radius: 30px; color: white; font-weight: bold; font-size: 14px; }
+        /* 示范文本区 */
+        .script-container { display: flex; flex-direction: column; gap: 40px; }
+        .script-box { padding: 45px; border-radius: 32px; position: relative; line-height: 1.85; box-shadow: 0 15px 35px rgba(0,0,0,0.04); }
+        .badge { position: absolute; top: -18px; left: 40px; padding: 8px 24px; border-radius: 50px; color: white; font-weight: 800; font-size: 14px; letter-spacing: 1px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         
-        .simple-version { background: #f0fdf4; border: 2px solid #bbf7d0; }
-        .adv-version { background: #f5f3ff; border: 2px solid #ddd6fe; }
-        .b-simple { background: #059669; }
-        .b-adv { background: #7c3aed; }
+        .simple-v { background: #ffffff; border: 2px solid #e0e7ff; }
+        .adv-v { background: #ffffff; border: 2px solid #f3e8ff; }
+        .b-simple { background: linear-gradient(135deg, #6366f1, #4338ca); }
+        .b-adv { background: linear-gradient(135deg, #a855f7, #7c3aed); }
 
-        .instruction-tag { color: #b45309; background: #fff7ed; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 10px; display: inline-block; }
+        .instruction-tag { font-size: 12px; color: #64748b; margin-bottom: 15px; display: block; font-weight: 600; text-transform: uppercase; }
+        .script-content { font-size: 16px; color: #334155; white-space: pre-wrap; }
+        .word-counter { margin-top: 25px; padding-top: 15px; border-top: 1px dashed #e2e8f0; font-size: 13px; color: #94a3b8; font-weight: bold; display: flex; justify-content: space-between; }
 
-        .word-count { font-size: 12px; color: var(--text-muted); float: right; margin-top: 10px; }
-
-        @media (max-width: 1100px) {
+        /* 响应式 */
+        @media (max-width: 1200px) {
             .grid-layout { grid-template-columns: 1fr; }
-            .sidebar { width: 220px; }
-            .main-content { margin-left: 220px; }
+            .sidebar { width: 240px; }
+            .main-content { margin-left: 240px; }
         }
     </style>
 </head>
@@ -97,33 +106,34 @@
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>雅思口语 Pro</h2>
-            <p style="font-size:12px; color:#94a3b8">深度逻辑教学版</p>
+            <h2>雅思 Pro · 满分版</h2>
         </div>
         
         <div class="nav-group">
-            <div class="nav-label">重点话题精选</div>
-            <a href="#" class="nav-item active" onclick="loadTopic('animal')">野生动物 (雪豹/细节侧写)</a>
-            <a href="#" class="nav-item" onclick="loadTopic('info')">信息搜索 (停电/对比叙述)</a>
-            <a href="#" class="nav-item" onclick="loadTopic('friend')">好朋友 (侧面描写)</a>
-            <a href="#" class="nav-item" onclick="loadTopic('watersport')">水上运动 (挑战/刺激)</a>
-            <a href="#" class="nav-item" onclick="loadTopic('traditional')">传统故事 (叙事逻辑)</a>
+            <div class="nav-label">核心高频题</div>
+            <a href="#" class="nav-item active" onclick="loadTopic('animal')">想了解的野生动物</a>
+            <a href="#" class="nav-item" onclick="loadTopic('info')">必须搜寻信息的时刻</a>
+            <a href="#" class="nav-item" onclick="loadTopic('friend')">一位重要的好朋友</a>
+            <a href="#" class="nav-item" onclick="loadTopic('watersport')">想尝试的水上运动</a>
+            <a href="#" class="nav-item" onclick="loadTopic('traditional')">一个有趣的传统故事</a>
         </div>
 
         <div class="nav-group">
-            <div class="nav-label">其他补充话题</div>
-            <a href="#" class="nav-item" onclick="loadTopic('oldPerson')">有趣的老人</a>
+            <div class="nav-label">人物/地点/其他</div>
+            <a href="#" class="nav-item" onclick="loadTopic('oldPerson')">有趣的老年人</a>
             <a href="#" class="nav-item" onclick="loadTopic('famous')">想见的名人</a>
             <a href="#" class="nav-item" onclick="loadTopic('building')">有趣的建筑</a>
-            <a href="#" class="nav-item" onclick="loadTopic('movie')">搞笑电影</a>
-            <a href="#" class="nav-item" onclick="loadTopic('novel')">有趣的小说</a>
+            <a href="#" class="nav-item" onclick="loadTopic('movie')">让你发笑的电影</a>
+            <a href="#" class="nav-item" onclick="loadTopic('novel')">有趣的小说/故事</a>
         </div>
     </nav>
 
     <div class="timer-box">
         <div id="timer-display">02:00</div>
-        <button class="t-btn t-start" onclick="toggleTimer()">开始 / 暂停</button>
-        <button class="t-btn t-reset" onclick="resetTimer()">重置</button>
+        <div class="timer-ctrl">
+            <button class="t-btn t-start" onclick="toggleTimer()">开始答题</button>
+            <button class="t-btn t-reset" onclick="resetTimer()">重置</button>
+        </div>
     </div>
 
     <main class="main-content" id="app">
@@ -135,116 +145,116 @@
             title: "Describe a wild animal that you want to know more about",
             cue: "You should say: What it is; When/where you saw it; Why you want to know more about it; And explain what you want to know more about it.",
             basics: {
-                "核心物种": "Snow Leopard (雪豹), often called the 'Ghost of the Mountains'.",
-                "外貌特征": "Thick smoky-grey fur with black rosettes; a long, heavy tail used for balance.",
-                "侧写细节": "Imagine a silent shadow moving across sheer cliffs in the freezing Himalayas."
+                "目标动物": "Snow Leopard (雪豹), nicknamed the 'Ghost of the Mountains'.",
+                "视觉细节": "Grey fur with black circles, a tail as long as its body, looking very fluffy but powerful.",
+                "侧写角度": "The contrast between the silent rocks and the sudden movement of the predator."
             },
             vocab: [
                 {w: "Natural habitat", m: "自然栖息地"}, {w: "Blend into", m: "融为一体"}, 
-                {w: "Apex predator", m: "顶级掠食者"}, {w: "Endangered status", m: "濒危状态"},
-                {w: "Conservation efforts", m: "保护工作"}, {w: "Unpredictable", m: "不可预测的"},
-                {w: "Solitary nature", m: "独居习性"}, {w: "Elusive", m: "行踪诡秘的"},
-                {w: "Stealthy movement", m: "悄无声息的移动"}, {w: "Pique my interest", m: "勾起兴趣"},
-                {w: "Vulnerable to...", m: "易受...影响"}, {w: "Extreme altitudes", m: "极端海拔"},
-                {w: "Camouflage", m: "伪装"}, {w: "Physiological adaptation", m: "生理适应"},
-                {w: "Visual impact", m: "视觉冲击力"}, {w: "Stalk its prey", m: "潜行追踪猎物"},
-                {w: "Human-wildlife conflict", m: "人与野生动物冲突"}, {w: "Nature documentary", m: "自然纪录片"},
-                {w: "Rugged terrain", m: "崎岖的地形"}, {w: "Fascinated by...", m: "被...深深吸引"}
+                {w: "Master of camouflage", m: "伪装大师"}, {w: "Endangered status", m: "濒危状态"},
+                {w: "Pique my curiosity", m: "勾起好奇心"}, {w: "Apex predator", m: "顶级掠食者"},
+                {w: "Elusive", m: "行踪诡秘的"}, {w: "Breathtaking", m: "惊人的"},
+                {w: "Inhabitant", m: "栖息者"}, {w: "Stealthy", m: "悄无声息的"},
+                {w: "Vulnerable", m: "脆弱的"}, {w: "Rugged terrain", m: "崎岖地形"},
+                {w: "Nature conservation", m: "自然保护"}, {w: "Solitary", m: "独居的"},
+                {w: "Invisibility cloak", m: "隐身衣"}, {w: "Striking", m: "引人注目的"},
+                {w: "High-altitude", m: "高海拔"}, {w: "Stalk", m: "潜行追踪"},
+                {w: "Biodiversity", m: "生物多样性"}, {w: "Mythical", m: "神话般的"}
             ],
-            simple: "I’d like to talk about the snow leopard, a creature that has always fascinated me. I first saw it in a documentary when I was about ten years old. I remember sitting on my sofa, staring at the TV, and for a long time, the screen just showed a pile of grey rocks. Then, all of a sudden, part of the 'rock' moved. It was a snow leopard. \n\nThat moment really piqued my interest because I couldn't believe an animal could hide so perfectly in plain sight. They have this thick, beautiful fur that allows them to blend into the mountains. I want to know more about how they survive in such extreme altitudes. The documentary showed them jumping across huge gaps between cliffs, and it looked so dangerous. I also want to understand their endangered status. Because they live in such remote areas, it's hard for scientists to track them. I want to know what we can do to protect their natural habitat from climate change. Every time I think about this 'Ghost of the Mountains', I feel a sense of mystery. I hope to learn more about their daily lives and how they hunt in the silent snow.",
-            advanced: "I'd like to describe the snow leopard, an animal that is often referred to as the 'Ghost of the Mountains' due to its incredibly elusive nature. My obsession with this feline began years ago while watching a high-definition nature documentary. I vividly recall a scene where the camera focused on a rugged, snowy terrain for nearly a minute. To my untrained eye, it was just a landscape of stones and shadows, but then, a slight twitch of a tail revealed a majestic leopard. It was a masterclass in camouflage. \n\nThis visual impact is precisely why I’m dying to know more about them. I’m particularly interested in their physiological adaptations—how their oversized paws act like natural snowshoes and how they use their massive tails for balance on sheer cliffs. Beyond their physical traits, I want to explore their solitary lifestyle. Living as an apex predator in the silent, hostile environment of the Himalayas seems both heroic and incredibly lonely. Furthermore, I’m concerned about their vulnerable status. I’d love to delve deeper into the conservation efforts being made to mitigate human-wildlife conflict. The idea that such a stealthy, beautiful creature could vanish forever is heartbreaking. I want to understand the data behind their population trends and what specific measures can be taken to ensure they continue to roam the peaks in silence."
+            simple: "Actually, to be honest, I'm not a big fan of all animals, but there is one wild animal that I’ve been really interested in for a long time, and that is the Snow Leopard. I remember it so clearly because I first saw it in a nature documentary on TV when I was about ten years old. I was sitting on my sofa, eating some snacks, and my dad turned on the channel. At first, the screen just showed a lot of grey rocks and snow in the mountains. I thought it was a bit boring and I was about to go to my room, but then, my dad said, 'Wait, look!' Suddenly, a part of the 'rock' started moving, and I realized it was a giant cat. \n\nI was so shocked because I couldn't see it at all before it moved. It has this thick, smoky-grey fur that helps it blend into the background perfectly. It looked like it was wearing an invisibility cloak. That moment really piqued my curiosity. I want to know more about how they survive in such cold and high places without any help from humans. I also want to know more about their tail, because in the video, it looked very long and heavy, and I wonder if they use it like a blanket when they sleep. Actually, I also read that they are an endangered species, so I’m quite worried about them. I want to learn what we can do to protect their natural habitat. If I have the chance in the future, I really want to go to a museum or a research center to see more videos or photos of them. It's just such a mysterious and beautiful creature that I can't stop thinking about it. I guess that’s why I want to learn every little detail about their lives.",
+            advanced: "I’d like to recount my fascination with the Snow Leopard, a creature often referred to as the 'Ghost of the Mountains' due to its incredibly elusive nature. My obsession began nearly a decade ago while watching a high-definition documentary. I vividly recall a particular scene where the camera focused on a rugged, snowy terrain for almost two minutes. To my untrained eye, it was merely a landscape of static stones and shadows. However, the moment a slight twitch of a tail revealed the majestic predator, I was utterly breathless. It was a masterclass in natural camouflage. \n\nThis striking visual impact is precisely why I’m dying to delve deeper into their world. I’m particularly captivated by their physiological adaptations—specifically, how their oversized paws act as natural snowshoes and how their exceptionally long tails provide balance on sheer, vertical cliffs. Beyond their physical traits, I find their solitary lifestyle in the hostile environment of the Himalayas to be both heroic and profoundly lonely. I want to understand the psychological drive of a solitary apex predator. Furthermore, I am deeply concerned about their vulnerable status in the face of climate change. I want to explore the data behind their population trends and the specific conservation efforts being made to mitigate human-wildlife conflict. The idea that such a stealthy, beautiful creature could vanish into the mist forever is a heartbreaking thought. I want to learn more about the scientific methods used to track them in the wild, as they are so difficult to spot. For me, the Snow Leopard represents the ultimate mystery of the natural world, and I feel a strong desire to advocate for their protection."
         },
         info: {
             title: "Describe a time when you needed to search for information",
             cue: "You should say: What info you searched for; When/where you searched for it; And explain why you needed to search for it.",
             basics: {
-                "紧急背景": "A critical blackout during a university final assignment deadline.",
-                "搜索重点": "Alternative power solutions and academic data via mobile networks.",
-                "侧写对比": "The silence of a dark room vs. the frantic tapping on a phone screen."
+                "核心冲突": "A sudden blackout vs. a critical assignment deadline.",
+                "描写细节": "The dead silence of the room, the glowing red battery icon, the cold sweat.",
+                "对比结构": "The comfort of high-speed Wi-Fi vs. the struggle of weak mobile data."
             },
             vocab: [
-                {w: "Race against the clock", m: "争分夺秒"}, {w: "Sudden blackout", m: "突发停电"}, 
-                {w: "Critical deadline", m: "关键截止日期"}, {w: "Sift through", m: "筛查/搜寻"},
-                {w: "Digital era", m: "数字时代"}, {w: "Reliability", m: "可靠性"},
-                {w: "Fragmented information", m: "碎片化信息"}, {w: "Streamline the process", m: "简化流程"},
-                {w: "Academic research", m: "学术研究"}, {w: "Technical glitch", m: "技术故障"},
-                {w: "Search query", m: "搜索指令"}, {w: "Mobile data", m: "移动流量"},
-                {w: "Filter out", m: "过滤"}, {w: "Synthesize", m: "综合/合成"},
-                {w: "Under pressure", m: "在压力下"}, {w: "Clarity", m: "清晰度"},
-                {w: "Indispensable", m: "必不可少的"}, {w: "Enlightening", m: "启发性的"},
-                {w: "Panic-stricken", m: "惊慌失措的"}, {w: "A sense of relief", m: "宽慰感"}
+                {w: "Sudden blackout", m: "突发停电"}, {w: "Race against the clock", m: "争分夺秒"}, 
+                {w: "Pitch black", m: "漆黑一片"}, {w: "Critical deadline", m: "关键截止日期"},
+                {w: "Sift through", m: "筛选/搜寻"}, {w: "Reliability", m: "可靠性"},
+                {w: "Fragmented information", m: "碎片化信息"}, {w: "Panic-stricken", m: "惊慌失措的"},
+                {w: "Indispensable", m: "必不可少的"}, {w: "Streamline", m: "简化/效率化"},
+                {w: "Technical glitch", m: "技术故障"}, {w: "Academic research", m: "学术研究"},
+                {w: "Filter out", m: "过滤"}, {w: "A sense of relief", m: "宽慰感"},
+                {w: "Mobile data", m: "移动流量"}, {w: "Synthesize", m: "综合/合成"},
+                {w: "Frantic", m: "疯狂的/焦急的"}, {w: "Verification", m: "核实"},
+                {w: "Search query", m: "搜索查询"}, {w: "Resourceful", m: "足智多谋的"}
             ],
-            simple: "I want to talk about a time I had to search for information very urgently. It happened last winter when I was writing my final history report. It was about 11 PM, and the deadline was midnight. Suddenly, all the lights went out—a total blackout. My heart sank because my laptop was low on battery and the Wi-Fi was gone. \n\nI had to use my smartphone and mobile data to search for some last-minute historical facts. I was sitting in the dark, with only the light from my phone screen. I was racing against the clock. Before the blackout, I was feeling relaxed, but now I was so stressed that my hands were shaking. I needed that information because my report wouldn't be complete without the correct dates. I sifted through many websites to find reliable data. After about 20 minutes of frantic searching, I finally found what I needed and uploaded my work just five minutes before the deadline. When the power finally came back an hour later, I was already in bed, feeling a huge sense of relief. It made me realize how much I depend on technology.",
-            advanced: "I’d like to recount a high-stakes situation where I had to search for information under extreme pressure. It was during my final semester, just hours before a major academic deadline. I was finishing a complex analysis on economic trends when a sudden blackout plunged my entire neighborhood into darkness. The silence was deafening, and my immediate thought was about the 15% battery life remaining on my devices. \n\nI was forced to rely entirely on my smartphone to search for the specific statistical models I needed to conclude my paper. The contrast between my calm, organized research session earlier that day and this frantic race against the clock was jarring. I remember hunched over in the pitch-black room, my eyes straining against the blue light of the screen, desperately typing search queries. I had to sift through a vast amount of fragmented information to filter out irrelevant data. I eventually turned to an AI-powered search tool to streamline the process, which was a total game-changer. It synthesized the complex data into manageable points, allowing me to finish the work. The urgency of the situation forced me to be more efficient than I’ve ever been. When I finally hit the 'submit' button, the adrenaline was still pumping. That night was an enlightening reminder of our vulnerability in the digital age."
+            simple: "Well, to be honest, I search for information every day on my phone, but there was one specific time that I will never forget. It was about three months ago, on a very cold Tuesday night. I was at home, sitting at my desk and preparing for a very important history exam. I had to finish a big assignment by midnight, and it was already 10:30 PM. Suddenly, everything went pitch black. The lights went out, and my Wi-Fi stopped working immediately. I realized there was a sudden blackout in my neighborhood. \n\nI was absolutely panic-stricken because I hadn't saved the latest information I found for my essay. I only had my smartphone, and the battery was at only 20%. I could see the glowing red battery icon, and I started to have cold sweat. I had to use my mobile data, which was very slow, to search for the specific dates and names of the historical figures I needed. I was racing against the clock. Usually, I can find things in two minutes, but that night, I had to sift through many websites to find the most reliable information while my phone kept warning me about the low battery. I was typing so fast that my fingers were almost shaking. I needed that information because without it, I would fail the assignment and get a bad grade. After about 45 minutes of frantic searching, I finally found what I needed and uploaded my work using my phone. Just two minutes later, my phone died. I sat there in the dark for a long time, feeling a huge sense of relief. It was a very stressful experience, but it taught me to always be prepared for a technical glitch.",
+            advanced: "I’d like to recount a high-pressure situation last semester when I was forced to search for information under incredibly difficult circumstances. It was the eve of my final thesis submission, and I was in the middle of a complex data verification process when a sudden blackout plunged my apartment into absolute darkness. The silence that followed was deafening. My router was dead, and my laptop’s battery was rapidly depleting. I felt a surge of adrenaline, but not the good kind—I was genuinely panic-stricken. \n\nWith a critical deadline looming at midnight, I had to rely entirely on my smartphone’s dwindling battery and a very unstable mobile connection. I was forced to sift through a vast amount of fragmented information on the web to find the specific economic statistics I needed. The contrast between the organized, calm research environment I had earlier that day and this frantic race against the clock was jarring. I remember hunched over in the pitch-black room, my eyes straining against the harsh blue light of the screen, desperately typing search queries. I had to filter out a lot of irrelevant noise and synthesize the core data points while my phone battery dropped to 5%. This experience was profoundly enlightening; it highlighted our total dependency on digital reliability. I had to be extremely resourceful, using every second wisely. When I finally managed to submit the file, just moments before my phone turned off, I felt an overwhelming sense of relief. It was a stark reminder of how indispensable the internet has become to our academic lives, and how vulnerable we are when technology fails us at the most inconvenient moment."
         },
         friend: {
             title: "Describe a good friend who is important to you",
-            cue: "You should say: Who he/she is; How you got to know him/her; How long you have known each other; And explain why he/she is important to you.",
+            cue: "You should say: Who he/she is; How/where you got to know him/her; How long you have known each other; And explain why he/she is important to you.",
             basics: {
-                "外貌侧写": "Not traditionally handsome, but has a pair of bright, observant eyes.",
-                "性格特质": "Low-profile but incredibly sharp; a 'man of few words' but great action.",
-                "相识场景": "A rainy afternoon in a high school cafeteria, sharing a broken umbrella."
+                "人物特写": "Leo, a guy who always wears a simple hoodie, having a very calm voice.",
+                "性格魅力": "Not the loudest person in the room, but the most reliable one.",
+                "回忆细节": "The sound of heavy rain on the school roof when we first spoke."
             },
             vocab: [
-                {w: "Lifelong friend", m: "终身好友"}, {w: "Strike up a friendship", m: "建立友谊"}, 
-                {w: "A man of few words", m: "沉默寡言的人"}, {w: "Kindred spirit", m: "志趣相投的人"},
-                {w: "Through thick and thin", m: "患难与共"}, {w: "Invaluable advice", m: "宝贵的建议"},
-                {w: "Unwavering support", m: "坚定的支持"}, {w: "Sense of humor", m: "幽默感"},
-                {w: "Reliable", m: "可靠的"}, {w: "Mutual respect", m: "互相尊重"},
-                {w: "Stay in touch", m: "保持联系"}, {w: "Deeply influence", m: "深远影响"},
-                {w: "Personality clash", m: "性格冲突"}, {w: "Introverted", m: "内向的"},
-                {w: "Supportive", m: "支持性的"}, {w: "A shoulder to cry on", m: "可以依靠的肩膀"},
-                {w: "Common interests", m: "共同兴趣"}, {w: "Academic pressure", m: "学业压力"},
-                {w: "Cherish every moment", m: "珍惜每刻"}, {w: "Loyalty", m: "忠诚"}
+                {w: "Lifelong friend", m: "终身好友"}, {w: "Strike up a conversation", m: "搭讪/开启对话"}, 
+                {w: "Through thick and thin", m: "患难与共"}, {w: "A man of few words", m: "沉默寡言的人"},
+                {w: "Invaluable advice", m: "宝贵的建议"}, {w: "Unwavering support", m: "坚定的支持"},
+                {w: "Kindred spirit", m: "志同道合的人"}, {w: "Reliable", m: "可靠的"},
+                {w: "Personality clash", m: "性格冲突"}, {w: "Soulmate", m: "灵魂伴侣"},
+                {w: "Supportive", m: "支持性的"}, {w: "A shoulder to cry on", m: "依靠的肩膀"},
+                {w: "Stood by me", m: "支持我"}, {w: "Mutual respect", m: "互相尊重"},
+                {w: "Stay in touch", m: "保持联系"}, {w: "Academic pressure", m: "学业压力"},
+                {w: "Deeply influence", m: "深远影响"}, {w: "Loyalty", m: "忠诚"},
+                {w: "Introverted", m: "内向的"}, {w: "Cherish", m: "珍惜"}
             ],
-            simple: "I’m going to talk about my friend Leo, who has been my best friend for over six years. We met on a very rainy day back in high school. I had forgotten my umbrella, and I was standing at the school gate, feeling quite miserable. Leo walked up to me—he was a quiet boy in my class—and offered to share his umbrella. We walked to the bus station together, and that’s how we struck up a friendship. \n\nLeo is important to me because he is a very reliable person. Last year, I was going through a very tough time because I failed my driving test three times. I felt like a loser. Leo didn't tell me 'it’s okay' or give me a boring speech. Instead, he took me to an empty parking lot every weekend and helped me practice for hours. He was so patient, even when I made the same mistakes again and again. He’s a man of few words, but his actions speak louder than anything else. He’s the person I go to whenever I have a problem because I know he will give me honest and invaluable advice. I really cherish our friendship because he has seen me at my best and my worst, and he’s still standing by me.",
-            advanced: "I’d like to describe Leo, someone I consider a kindred spirit and a cornerstone of my life. Our paths first crossed during a gloomy, rain-soaked afternoon in high school. I was stranded at the entrance without an umbrella, watching the crowds disappear, when Leo—an introverted classmate I’d barely spoken to—offered to share his. That shared walk to the station was the beginning of a bond that has now spanned over half a decade. \n\nWhat makes Leo indispensable to me isn't just our shared history, but his unwavering support during my darkest moments. He possesses this rare quality of being a man of few words but immense action. I recall a period last year when I was drowning in academic pressure and personal self-doubt. While others offered superficial encouragement, Leo was there to provide a shoulder to cry on and practical solutions. He would sit with me in silence for hours, just to ensure I didn't feel alone. This contrast between his quiet demeanor and his fierce loyalty is what I admire most. He doesn't just listen; he hears what I’m not saying. His influence on me has been profound, teaching me the value of patience and true reliability. Our friendship has survived various personality clashes and life changes, and I honestly can’t imagine navigating my twenties without his steady presence by my side."
+            simple: "Actually, I have many friends, but if I have to choose the most important one, it would definitely be my friend Leo. We have known each other for about eight years now, which is a very long time. I remember it so clearly because we first met in the high school cafeteria on a very rainy afternoon. I had forgotten my umbrella and I was standing there, looking at the rain and feeling quite miserable because I didn't want to get wet. Suddenly, a boy walked up to me and asked if I wanted to share his umbrella. That was Leo. We started walking together and we realized that we both liked the same video games and music. That’s how we struck up a conversation and became friends. \n\nLeo is important to me because he is always there through thick and thin. For example, last year I had a lot of academic pressure and I failed a very big exam. I felt like a loser and I didn't want to talk to anyone. Leo didn't give me a long speech or tell me 'it’s okay'. Instead, he just came to my house with my favorite bubble tea and we sat in silence for a long time. Then he helped me plan how to study for the next exam. He is a man of few words, but he is the most reliable person I know. He always gives me invaluable advice when I’m confused about my life. I guess he is more like a brother to me now. I really cherish our friendship because I know that no matter what happens, he will always stand by me. We still stay in touch every day even though we are in different universities now.",
+            advanced: "I’d like to describe Leo, a person I consider a kindred spirit and a cornerstone of my life. Our friendship dates back to a gloomy, rain-soaked afternoon in our high school cafeteria eight years ago. I remember the rhythmic sound of heavy rain hitting the metal roof as I stood there, stranded without an umbrella. Leo, an introverted classmate I’d barely interacted with, approached me and quietly offered to share his. That simple act of kindness was the catalyst for a bond that has only strengthened over the years. \n\nWhat makes Leo indispensable to me is his unwavering support and his unique ability to provide a shoulder to cry on without being overbearing. He is truly a man of few words, yet his actions possess a depth that I find profoundly moving. A perfect illustration of this was during a period of intense personal self-doubt last year. While many offered cliché encouragement, Leo provided a silent, supportive presence, helping me navigate my academic pressure with practical solutions rather than empty promises. Our relationship is built on a foundation of mutual respect and a shared sense of loyalty. Despite occasional personality clashes, we have managed to stay in touch through every major life transition. He has deeply influenced my perspective on what it means to be a reliable friend. To me, Leo isn't just a companion; he is a pillar of strength who has stood by me through thick and thin. I honestly cannot imagine my journey through my twenties without his steady influence and his invaluable, honest advice."
         },
         watersport: {
             title: "Describe a water sport you would like to try in the future",
             cue: "You should say: What it is; Where you would like to try it; Whether it is difficult; And explain why you would like to try it.",
             basics: {
-                "运动项目": "Scuba Diving (水肺潜水).",
-                "理想地点": "The Great Barrier Reef in Australia, or the crystal clear waters of Southeast Asia.",
-                "心理期待": "A transition from the noisy world to a silent, blue universe."
+                "目标运动": "Scuba Diving (水肺潜水).",
+                "期待画面": "The transition from the noisy surface to the silent, blue universe.",
+                "挑战程度": "Requires professional training, technical equipment, and a leap of faith."
             },
             vocab: [
                 {w: "Bucket list", m: "人生清单"}, {w: "Weightless", m: "无重力的"}, 
                 {w: "Adrenaline rush", m: "肾上腺素激增"}, {w: "Marine life", m: "海洋生物"},
-                {w: "Vibrant coral reefs", m: "鲜艳的珊瑚礁"}, {w: "Breath-taking", m: "惊人的"},
-                {w: "Professional training", m: "专业训练"}, {w: "Exhilarating", m: "令人兴奋的"},
-                {w: "Step out of my comfort zone", m: "跳出舒适圈"}, {w: "A sense of freedom", m: "自由感"},
-                {w: "Crystal clear", m: "清澈见底"}, {w: "Underwater world", m: "水下世界"},
-                {w: "Equipment", m: "设备/器材"}, {w: "Physical challenge", m: "身体挑战"},
-                {w: "Tranquility", m: "宁静"}, {w: "Biodiversity", m: "生物多样性"},
-                {w: "Captivated by...", m: "被...吸引"}, {w: "Leap of faith", m: "大胆的尝试"},
-                {w: "Unforgettable experience", m: "难忘的经历"}, {w: "Explore the unknown", m: "探索未知"}
+                {w: "Vibrant coral reefs", m: "鲜艳的珊瑚礁"}, {w: "Step out of my comfort zone", m: "跳出舒适圈"},
+                {w: "Tranquility", m: "宁静"}, {w: "Exhilarating", m: "令人兴奋的"},
+                {w: "Crystal clear", m: "清澈见底"}, {w: "Leap of faith", m: "大胆的尝试"},
+                {w: "Professional training", m: "专业训练"}, {w: "Underwater world", m: "水下世界"},
+                {w: "Biodiversity", m: "生物多样性"}, {w: "Breathtaking", m: "惊人的"},
+                {w: "Captivated by...", m: "被...吸引"}, {w: "Equipment", m: "设备/器材"},
+                {w: "Unforgettable", m: "难忘的"}, {w: "A sense of freedom", m: "自由感"},
+                {w: "Physical challenge", m: "身体挑战"}, {w: "Explore the unknown", m: "探索未知"}
             ],
-            simple: "I’ve always had a bucket list of things I want to do, and at the very top is scuba diving. I’ve been interested in this sport since I saw a movie about the ocean. I would love to try it in a place like Thailand or Australia where the water is crystal clear. \n\nI think it will be quite difficult at first because you have to learn how to use the oxygen tank and breathe properly under water. It’s not a natural thing for humans to do, so I’ll definitely need professional training. However, the reason I’m so keen to try it is the sense of freedom it offers. I want to feel weightless, like I’m flying through the water. I’ve seen pictures of vibrant coral reefs and thousands of colorful fish, and I want to see them with my own eyes instead of just on a screen. Currently, my life is very busy and noisy, so I think diving into the silent underwater world would give me a lot of tranquility. It’s a big physical challenge, but I’m ready to step out of my comfort zone to explore the unknown. It would be an unforgettable experience for me.",
-            advanced: "A water sport that has been at the summit of my bucket list for years is scuba diving. Ideally, I’d like to take the plunge in the Great Barrier Reef, a place renowned for its staggering biodiversity. The prospect of immersing myself in that vibrant, underwater world is something I find utterly exhilarating. \n\nAdmittedly, scuba diving isn't a sport you can just jump into; it requires a leap of faith and rigorous professional training. Mastering the equipment and learning to maintain buoyancy while breathing through a regulator is a significant physical and mental challenge. However, that’s precisely why I’m drawn to it. I’ve always been captivated by the idea of being 'weightless'—experiencing a form of movement that is impossible on land. The contrast between the chaotic, noisy world we live in and the absolute tranquility of the deep blue sea is what I crave. I want to move past the surface and witness the intricate ecosystems of coral reefs firsthand. For me, it’s not just about the adrenaline rush; it’s about a profound shift in perspective. Stepping out of my comfort zone to explore a silent, alien environment would be an enlightening experience that I’m sure would stay with me for a lifetime."
+            simple: "Well, to be honest, I’m not a very good swimmer, but there is one water sport that has been on my bucket list for a very long time, and that is scuba diving. I’ve been interested in this since I saw a movie called 'Finding Nemo' when I was a child, and later I saw many beautiful photos on social media. I would really love to try it in a place where the water is crystal clear, like Thailand or perhaps the Great Barrier Reef in Australia. I want to see the vibrant coral reefs and all the colorful fish with my own eyes instead of just on a screen. \n\nActually, I think it will be quite difficult and even a bit scary at first. You have to use a lot of heavy equipment, like the oxygen tank and the mask, and you have to learn how to breathe properly underwater. It’s not a natural thing for humans to do, so I’ll definitely need some professional training and a lot of practice. I might feel a bit panic-stricken when I first go under the water. However, the reason I really want to try it is the sense of freedom it offers. I want to feel weightless, almost like I’m flying in a blue universe. Currently, my life in the city is very noisy and busy, so I think diving into the silent underwater world would give me a lot of tranquility. I want to step out of my comfort zone and see what the world looks like 20 meters under the sea. I guess it will be an exhilarating and unforgettable experience for me. I’m planning to save some money and take a diving course next summer, and I really hope I can overcome my fear of water.",
+            advanced: "A water sport that has occupied the top spot on my bucket list for years is scuba diving. Ideally, I’d like to take the plunge in the Great Barrier Reef, a location renowned for its staggering marine biodiversity. The prospect of immersing myself in that vibrant, underwater world is something I find utterly captivating. I’ve always been drawn to the idea of a transition from the chaotic, noisy surface of our world to a silent, deep-blue universe where the only sound you hear is your own breathing. \n\nAdmittedly, scuba diving is not a sport for the faint-hearted. It requires a significant leap of faith and rigorous professional training to master the complex equipment and maintain buoyancy. Learning to breathe through a regulator while navigating an alien environment is a formidable physical challenge. However, that’s precisely why I find it so exhilarating. I crave the sensation of being 'weightless'—experiencing a form of movement that is impossible on land. The contrast between my structured, metropolitan life and the unpredictable beauty of the coral reefs is what drives my curiosity. I want to witness firsthand the intricate ecosystems and the breathtaking array of marine life that most people only see in documentaries. For me, scuba diving represents the ultimate way to step out of my comfort zone and explore the unknown. It’s not just about the adrenaline rush; it’s about a profound shift in perspective. To be suspended in the crystal-clear water, surrounded by tranquility and mystery, would be an enlightening experience that I’m certain would stay with me for a lifetime."
         },
         traditional: {
             title: "Describe an interesting traditional story",
-            cue: "You should say: What the story is about; Who told you the story; And explain how you felt when you first heard it.",
+            cue: "You should say: What the story is about; When/how you knew it; Who told you the story; And explain how you felt when you first heard it.",
             basics: {
                 "故事名称": "The Legend of the White Snake (白蛇传).",
-                "核心冲突": "Love between a human and a supernatural being; the interference of a monk.",
-                "侧写氛围": "Ancient bridges, misty rain in Hangzhou, and magical transformations."
+                "核心冲突": "True love vs. rigid tradition; a monk who ruins everything.",
+                "叙事氛围": "Misty rain, ancient bridges, and the smell of grandmother's old wooden chair."
             },
             vocab: [
                 {w: "Folklore", m: "民间传说"}, {w: "Passed down through generations", m: "代代相传"}, 
-                {w: "Supernatural elements", m: "超自然元素"}, {w: "Moral of the story", m: "故事寓意"},
+                {w: "Supernatural", m: "超自然的"}, {w: "Moral of the story", m: "故事寓意"},
                 {w: "Symbolic", m: "象征性的"}, {w: "Deeply rooted in...", m: "深深植根于..."},
                 {w: "Sacrifice", m: "牺牲"}, {w: "Tragic ending", m: "悲剧结局"},
                 {w: "Good vs. Evil", m: "善与恶"}, {w: "Cultural heritage", m: "文化遗产"},
                 {w: "Mythological", m: "神话的"}, {w: "Emotional resonance", m: "情感共鸣"},
                 {w: "Vivid imagination", m: "丰富的想象力"}, {w: "Captivating", m: "引人入胜的"},
                 {w: "Bedtime story", m: "睡前故事"}, {w: "Prejudice", m: "偏见"},
-                {w: "Resonance", m: "共鸣"}, {w: "Forbidden love", m: "禁忌之恋"},
+                {w: "Indomitable", m: "不屈不挠的"}, {w: "Forbidden love", m: "禁忌之恋"},
                 {w: "Iconic", m: "标志性的"}, {w: "Justice", m: "正义"}
             ],
-            simple: "I want to share a famous Chinese traditional story called 'The Legend of the White Snake'. My grandmother told me this story when I was a little girl. It was a cold winter night, and I remember sitting by her side as she described the beautiful West Lake in Hangzhou. \n\nThe story is about a white snake that transforms into a beautiful woman and falls in love with a young man named Xu Xian. They get married and are very happy, but a monk named Fahai thinks their love is wrong because she is not human. He tries everything to separate them and finally traps the White Snake under a pagoda. When I first heard this story, I felt very sad and angry at the monk. I couldn't understand why he wanted to destroy such a beautiful relationship. I was only seven, so I cried for the characters. Now that I’m older, I realize the story is symbolic. It’s about fighting for love even when the whole world is against you. This story has been passed down through generations in China and it’s a big part of our cultural heritage. It’s still very popular today in movies and operas.",
-            advanced: "I’d like to recount a cornerstone of Chinese folklore known as 'The Legend of the White Snake'. This captivating tale was first introduced to me by my grandmother as a bedtime story. I recall being mesmerized by her vivid descriptions of misty rain on the Broken Bridge in Hangzhou—a setting that felt almost mythological under her narration. \n\nThe narrative centers on a supernatural romance between a white snake spirit and a mortal man. Their forbidden love, however, is met with fierce opposition from a powerful monk who represents rigid tradition and prejudice. The conflict reaches a climax when the heroine is imprisoned beneath a pagoda, separated from her family. When I first heard this, it struck a deep emotional resonance within me. As a child, I was heartbroken by the injustice of their separation, but as an adult, I appreciate the story's complexity. It’s deeply rooted in our culture because it explores the tension between individual desire and social boundaries. The White Snake isn't just a monster; she is a symbol of sacrifice and the indomitable human spirit. This story has survived for centuries because its moral of the story—that love should transcend boundaries—is universal. It remains an iconic piece of our cultural heritage, continuing to inspire countless modern adaptations."
+            simple: "Well, to be honest, I’ve heard many traditional stories since I was a child, but the most interesting one is definitely 'The Legend of the White Snake'. I remember it so clearly because my grandmother used to tell me this story almost every time I visited her during the summer holidays. We would sit in her old wooden chair on the balcony, and she would tell me the story while the sun was going down. She has a very soft voice, and I loved listening to her. \n\nThe story is about a beautiful white snake that has magical powers. She transforms into a human woman and falls in love with a very kind man named Xu Xian. They get married and start a small shop together, and they are very happy. However, a mean monk named Fahai thinks their love is wrong because she is not a real human. He tries everything to separate them and finally traps the White Snake under a big pagoda. When I first heard this story, I felt very sad and quite angry. I was only about six or seven years old, and I cried because I thought it was so unfair. I couldn't understand why the monk was so mean to such a nice lady. Now that I’m older, I realize that this story is very symbolic. It’s about fighting for love and facing prejudice. It has been passed down through generations in China, and everyone knows it. It’s a very important part of our cultural heritage. I guess I will tell this story to my own children in the future, just like my grandmother did for me. It’s a captivating tale that really shows the power of the indomitable human spirit.",
+            advanced: "I’d like to recount a cornerstone of Chinese folklore known as 'The Legend of the White Snake'. This captivating tale was first introduced to me by my grandmother as a bedtime story during my childhood. I recall being utterly mesmerized by her vivid descriptions of misty rain on the Broken Bridge in Hangzhou—a setting that felt almost mythological under her narration. The smell of the old books in her room and her gentle voice created an atmosphere of pure mystery. \n\nThe narrative centers on a supernatural romance between a powerful white snake spirit, who transforms into a woman, and a mortal man. Their forbidden love, however, is met with fierce opposition from a rigid monk who represents the cold weight of tradition and prejudice. The conflict reaches a tragic climax when the heroine is imprisoned beneath a pagoda, separated from her family for eternity. When I first heard this, it struck a deep emotional resonance within me. As a child, I was heartbroken by the blatant injustice of their separation, but as an adult, I appreciate the story's profound symbolic depth. It is deeply rooted in our culture because it explores the tension between individual desire and social boundaries. The White Snake isn't merely a mythological figure; she is a symbol of sacrifice and the indomitable human spirit. This story has survived for centuries because its moral—that love should transcend the boundaries of species and status—is universal. It remains an iconic piece of our cultural heritage, continuing to inspire countless modern adaptations in film and opera. Listening to it again today reminds me of the power of storytelling to challenge our prejudices and champion justice."
         }
     };
 
@@ -268,25 +278,24 @@
 
         app.innerHTML = `
             <div class="section-header">
-                <h1 style="font-size:2.2rem; color:var(--bg-dark)">${topic.title}</h1>
+                <h1 style="font-size:2.5rem; color:var(--bg-sidebar); font-weight:800; letter-spacing:-1px">${topic.title}</h1>
             </div>
 
             <div class="cue-box">
-                <p style="margin:0; color:#b45309; font-weight:bold">题目要求 (Cues):</p>
-                <p style="margin:10px 0 0 0; font-style:italic">${topic.cue}</p>
+                <p class="cue-text"><strong>Topic Card:</strong> ${topic.cue}</p>
             </div>
 
             <div class="grid-layout">
                 <div class="card">
-                    <h3>🔍 基础信息与侧写 (Basics)</h3>
-                    <div class="instruction-tag">用于建立画面感，建议说满 30-40 秒</div>
-                    <ul style="padding-left:20px; line-height:2">
+                    <h3>🔍 深度侧写与逻辑 (Basics)</h3>
+                    <span class="instruction-tag">建议时长: 30-40 秒</span>
+                    <ul style="padding-left:20px; line-height:2.2; color:#475569; font-size:15px">
                         ${basicsHtml}
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>📚 自然表达库 (Natural Collocations)</h3>
-                    <div class="instruction-tag">重点关注动词搭配，避开老旧成语</div>
+                    <h3>📚 自然搭配库 (Vocabulary)</h3>
+                    <span class="instruction-tag">重点关注高频动词短语</span>
                     <div class="vocab-grid">
                         ${vocabHtml}
                     </div>
@@ -294,21 +303,28 @@
             </div>
 
             <div class="script-container">
-                <div class="script-box simple-version">
-                    <span class="badge b-simple">标准篇 (Band 5.5-6.0)</span>
-                    <div class="instruction-tag">侧重：叙事连贯性、基础对比</div>
+                <div class="script-box simple-v">
+                    <span class="badge b-simple">标准篇 (Simple & Detailed)</span>
+                    <span class="instruction-tag">目标：5.5 - 6.0 | 特点：生活化叙事、时长充足</span>
                     <div class="script-content">${topic.simple.replace(/\n/g, '<br>')}</div>
-                    <div class="word-count">字数: ${topic.simple.split(' ').length} words</div>
+                    <div class="word-counter">
+                        <span>Word Count: ~${topic.simple.split(' ').length} words</span>
+                        <span>Estimated: 2m 10s</span>
+                    </div>
                 </div>
-                <div class="script-box adv-version">
-                    <span class="badge b-adv">高分篇 (Band 6.5-7.5)</span>
-                    <div class="instruction-tag">侧重：细节侧写、情感波动、复杂搭配</div>
+                <div class="script-box adv-v">
+                    <span class="badge b-adv">高分篇 (Advanced & Fluent)</span>
+                    <span class="instruction-tag">目标：6.5 - 7.5 | 特点：深度侧写、地道句式</span>
                     <div class="script-content">${topic.advanced.replace(/\n/g, '<br>')}</div>
-                    <div class="word-count">字数: ${topic.advanced.split(' ').length} words</div>
+                    <div class="word-counter">
+                        <span>Word Count: ~${topic.advanced.split(' ').length} words</span>
+                        <span>Estimated: 2m 20s</span>
+                    </div>
                 </div>
             </div>
         `;
         resetTimer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // 计时器
@@ -319,19 +335,19 @@
     function toggleTimer() {
         if (isRunning) {
             clearInterval(timer);
-            document.querySelector('.t-start').innerText = '继续';
+            document.querySelector('.t-start').innerText = '继续答题';
         } else {
             timer = setInterval(() => {
                 if (timeLeft <= 0) {
                     clearInterval(timer);
-                    alert("时间到！");
+                    alert("答题时间到！");
                     resetTimer();
                     return;
                 }
                 timeLeft--;
                 updateTimerDisplay();
             }, 1000);
-            document.querySelector('.t-start').innerText = '暂停';
+            document.querySelector('.t-start').innerText = '暂停计时';
         }
         isRunning = !isRunning;
     }
@@ -341,7 +357,7 @@
         timeLeft = 120;
         isRunning = false;
         updateTimerDisplay();
-        document.querySelector('.t-start').innerText = '开始 / 暂停';
+        document.querySelector('.t-start').innerText = '开始答题';
     }
 
     function updateTimerDisplay() {
